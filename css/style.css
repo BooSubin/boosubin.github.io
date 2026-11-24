@@ -39,6 +39,8 @@
   --color-text: #f2f2f2;
   --color-text-sub: #9a9a9a;
   --color-text-hover: #cfcfcf;      /* 회색 글자에 마우스를 올렸을 때 */
+  --color-filter-idle: #666666;     /* 고르지 않은 필터 (배경 대비 3.2:1, 큰 글씨 기준 3:1 이상) */
+  --color-filter-hover: #9a9a9a;    /* 고르지 않은 필터에 마우스를 올렸을 때 */
   --color-line: #333333;
   --color-placeholder: #262626;
   --color-placeholder-text: #6e6e6e;
@@ -298,13 +300,13 @@ img {
   letter-spacing: var(--display-tracking);
   line-height: 1.2;
   padding: 5px 0;   /* 휴대폰에서도 누르는 영역이 44px 이상 되도록 */
-  color: var(--color-text-sub);
+  color: var(--color-filter-idle);
   transition: color 200ms ease;
 }
 
 .filter__button:hover,
 .filter__button:focus-visible {
-  color: var(--color-text-hover);
+  color: var(--color-filter-hover);
 }
 
 .filter__button[aria-pressed="true"] {
