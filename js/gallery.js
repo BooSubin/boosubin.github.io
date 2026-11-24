@@ -1,9 +1,9 @@
 'use strict';
 
 (() => {
-  const ALL = '전체';
+  const ALL = 'All';
   const PROPOSAL_LABEL = '경쟁 PT 제안';
-  const LANDING_CATEGORY = '랜딩페이지';
+  const LANDING_CATEGORY = 'Landing Page';
 
   const filterList = document.querySelector('[data-filter-list]');
   const grid = document.querySelector('[data-grid]');

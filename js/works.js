@@ -6,7 +6,8 @@
   항목 설명
   brand      브랜드 이름 (필수)
   title      작업 이름 (선택) 같은 브랜드 작업이 여러 개일 때 구분용. 예: "봄 프로모션"
-  category   카테고리 (필수) 예: "배너", "랜딩페이지". 새 이름을 쓰면 필터 버튼이 자동으로 생깁니다.
+  category   카테고리 (필수) 영문으로 적습니다. 예: "Banner", "Landing Page". 새 이름을 쓰면 필터 버튼이 자동으로 생깁니다.
+             ("Landing Page"는 긴 이미지를 세로로 보여주는 방식으로 열립니다.)
   year       연도 (필수) 숫자로 적습니다. 예: 2025
   type       "집행" 또는 "제안" (필수) "제안"이면 '경쟁 PT 제안' 표시가 붙습니다.
   role       맡은 역할 (선택)
@@ -21,7 +22,7 @@
 const WORKS = [
   {
     brand: "브랜드 A",
-    category: "배너",
+    category: "Banner",
     year: 2025,
     type: "집행",
     role: "배너 디자인 전담",
@@ -38,7 +39,7 @@ const WORKS = [
   {
     brand: "브랜드 B",
     title: "신제품 출시",
-    category: "랜딩페이지",
+    category: "Landing Page",
     year: 2025,
     type: "집행",
     role: "랜딩페이지 디자인",
@@ -47,7 +48,7 @@ const WORKS = [
   },
   {
     brand: "브랜드 C",
-    category: "배너",
+    category: "Banner",
     year: 2024,
     type: "집행",
     role: "배너 디자인 전담",
@@ -62,7 +63,7 @@ const WORKS = [
   },
   {
     brand: "브랜드 D",
-    category: "배너",
+    category: "Banner",
     year: 2024,
     type: "제안",
     role: "제안 시안 디자인",
@@ -77,7 +78,7 @@ const WORKS = [
   {
     brand: "브랜드 E",
     title: "회원 가입 이벤트",
-    category: "랜딩페이지",
+    category: "Landing Page",
     year: 2024,
     type: "제안",
     role: "랜딩페이지 디자인",
@@ -85,7 +86,7 @@ const WORKS = [
   },
   {
     brand: "브랜드 B",
-    category: "배너",
+    category: "Banner",
     year: 2023,
     type: "집행",
     images: [
