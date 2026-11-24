@@ -123,13 +123,56 @@
     });
   }
 
+  let currentFilter = ALL;
+  let filterTimer = null;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // CSS 변수에 적힌 시간(예: "180ms")을 숫자로 읽는다
+  function cssMs(name) {
+    return parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name)) || 0;
+  }
+
   function applyFilter(category) {
+    if (category === currentFilter) return;
+    currentFilter = category;
+
     filterList.querySelectorAll('[data-category]').forEach((button) => {
       button.setAttribute('aria-pressed', button.dataset.category === category ? 'true' : 'false');
     });
+
+    // 빠르게 연달아 누르면 앞의 전환은 취소하고 마지막 것만 보여준다
+    clearTimeout(filterTimer);
+    grid.classList.remove('is-entering');
+
+    if (reduceMotion.matches) {
+      showCards(category);
+      grid.classList.remove('is-leaving');
+      return;
+    }
+
+    // 1) 나가기
+    grid.classList.add('is-leaving');
+    filterTimer = setTimeout(() => {
+      // 2) 칸 바꾸고 들어오기
+      const count = showCards(category);
+      grid.classList.remove('is-leaving');
+      void grid.offsetWidth; // 애니메이션을 처음부터 다시 시작시키기 위한 줄
+      grid.classList.add('is-entering');
+
+      const duration = cssMs('--filter-in') + cssMs('--filter-stagger') * count;
+      filterTimer = setTimeout(() => grid.classList.remove('is-entering'), duration + 50);
+    }, cssMs('--filter-out'));
+  }
+
+  // 카테고리에 맞는 칸만 보이게 하고, 보이는 칸에 떠오르는 순서를 매긴다
+  function showCards(category) {
+    let order = 0;
     grid.querySelectorAll('[data-card]').forEach((card) => {
-      card.hidden = category !== ALL && card.dataset.category !== category;
+      const visible = category === ALL || card.dataset.category === category;
+      card.hidden = !visible;
+      if (visible) card.style.setProperty('--order', Math.min(order++, 11));
     });
+    return Math.min(order, 12);
   }
 
   /* ---------- 썸네일 격자 ---------- */
