@@ -124,7 +124,7 @@ const WORKS = [
     brand: "우리금융그룹",
     category: "Social Media",
     type: "집행",
-    objective: "그룹 공식 SNS 캐릭터 '위비프렌즈' 채널 콘텐츠",
+    objective: "그룹 공식 인스타그램 채널 콘텐츠",
     hook: "댄스 챌린지, 모델 생일 축하, 뉴스 형식 등 캐릭터를 앞세운 친근한 소재로 관심과 참여 유도",
     design: "콘텐츠마다 포맷(챌린지, 픽셀 아트, 뉴스 화면)을 달리해 금융 브랜드의 딱딱함을 덜고 캐릭터 세계관 유지",
     thumbnail: "images/works/woori-financial/thumb.webp",
