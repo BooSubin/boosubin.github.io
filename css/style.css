@@ -162,49 +162,24 @@ img {
   font-family: var(--font-display);
 }
 
-/* 맨 위 정보 줄: 숫자 줄·썸네일 격자와 같은 칸에 맞춘다 */
-.intro {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px var(--grid-gap);
+/* 맨 위 작은 이름 */
+.site-name {
+  margin: 0;
   font-size: var(--label-size);
-  font-weight: 500;
-  line-height: 1.5;
-}
-
-@media (min-width: 768px) {
-  .intro {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.intro__name {
-  margin: 0;
-  font-size: inherit;
   font-weight: 600;
-  line-height: inherit;
   letter-spacing: 0.02em;
-}
-
-.intro__item {
-  margin: 0;
-}
-
-.intro__list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-/* 괄호 라벨은 모두 회색, 내용은 흰색 */
-.label {
-  display: block;
-  color: var(--color-text-sub);
 }
 
 /* 큰 문장 */
 .hero {
   margin: clamp(64px, 10vw, 140px) 0 0;
+}
+
+.hero__label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: var(--label-size);
+  font-weight: 500;
 }
 
 .hero__text {
@@ -247,6 +222,17 @@ img {
 
 .archive {
   scroll-margin-top: 24px;
+}
+
+/* 대표 브랜드 (라벨 크기로 작게) */
+.hero__brands {
+  margin: 24px 0 0;
+  font-size: var(--label-size);
+  font-weight: 500;
+}
+
+.hero__brands-label {
+  color: var(--color-text-sub);
 }
 
 /* 숫자 줄 */
