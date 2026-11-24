@@ -59,6 +59,44 @@
     return el('span', 'badge', PROPOSAL_LABEL);
   }
 
+  /* ---------- 상단 숫자 줄 ---------- */
+
+  // 경력 연수: 시작 연월부터 꽉 채운 햇수 (6년 10개월 → 6+)
+  function careerYears() {
+    if (typeof CAREER_START === 'undefined') return null;
+    const [year, month] = CAREER_START.split('-').map(Number);
+    const now = new Date();
+    const months = (now.getFullYear() - year) * 12 + (now.getMonth() + 1 - month);
+    return Math.floor(months / 12);
+  }
+
+  function renderStats() {
+    const container = document.querySelector('[data-stats]');
+    if (!container) return;
+
+    const brands = new Set(works.map((work) => work.brand)).size;
+    const banners = works
+      .filter((work) => work.category === 'Banner')
+      .reduce((sum, work) => sum + work.images.length, 0);
+    const landings = works.filter(isLanding).length;
+    const years = careerYears();
+
+    const items = [
+      years != null && { value: years, unit: '+', label: 'Years of Experience' },
+      { value: brands, label: 'Brands' },
+      { value: banners, label: 'Banners' },
+      { value: landings, label: 'Landing Pages' },
+    ].filter(Boolean);
+
+    items.forEach(({ value, unit, label }) => {
+      const item = el('li', 'stat');
+      const number = el('span', 'stat__value', String(value));
+      if (unit) number.appendChild(el('span', 'stat__unit', unit));
+      item.append(number, el('span', 'stat__label', label));
+      container.appendChild(item);
+    });
+  }
+
   /* ---------- 필터 ---------- */
 
   function categories() {
@@ -249,6 +287,7 @@
     if (event.key === 'ArrowRight') showSingle(state.index + 1);
   });
 
+  renderStats();
   renderFilter();
   renderGrid();
 })();

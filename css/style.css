@@ -41,10 +41,12 @@
   /* 영문 제목·필터: Inter. 한글이 섞이면 그 글자는 SUIT로 나온다 */
   --font-display: "Inter Variable", var(--font-base);
 
-  /* 상단 이름(BOO SUBIN): 화면 폭에 따라 48px~160px 사이에서 커진다 */
-  --title-size: clamp(48px, 11vw, 160px);
-  --title-weight: 900;
-  --title-tracking: -0.02em;
+  /* 글자 크기: 아주 큰 것(문장·숫자)과 아주 작은 것(라벨) 두 단계로 대비를 준다 */
+  --hero-size: clamp(32px, 5.2vw, 76px);     /* 큰 문장 */
+  --stat-size: clamp(48px, 6.4vw, 96px);     /* 숫자 */
+  --display-weight: 400;                     /* 큰 글씨는 굵게 하지 않고 크기로 힘을 준다 */
+  --display-tracking: -0.035em;
+  --label-size: 13px;                        /* 이름·라벨·숫자 설명 */
 
   --page-max: 1440px;
   --page-gutter: 16px;
@@ -142,35 +144,74 @@ img {
 }
 
 .site-header {
-  padding-top: 48px;
-  padding-bottom: 40px;
+  padding-top: 24px;
+  padding-bottom: 80px;
+  font-family: var(--font-display);
 }
 
-.site-title {
+/* 맨 위 작은 이름 */
+.site-name {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--title-size);
-  font-weight: var(--title-weight);
-  letter-spacing: var(--title-tracking);
-  line-height: 0.9;
-}
-
-/* 직함·연차 */
-.site-role {
-  margin: 24px 0 0;
-  font-family: var(--font-display);
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: var(--label-size);
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
-/* 소개 한 줄 */
-.site-intro {
-  margin: 8px 0 0;
-  max-width: 50em;
-  text-wrap: balance;
-  font-family: var(--font-display);
-  font-size: clamp(15px, 1.4vw, 18px);
-  color: var(--color-text-sub);
+/* 큰 문장 */
+.hero {
+  margin: clamp(64px, 10vw, 140px) 0 0;
+}
+
+.hero__label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: var(--label-size);
+  font-weight: 500;
+}
+
+.hero__text {
+  margin: 0;
+  max-width: 17em;
+  font-size: var(--hero-size);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--display-tracking);
+  line-height: 1.08;
+}
+
+/* 숫자 줄 */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px var(--grid-gap);
+  margin: clamp(64px, 9vw, 120px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stat__value {
+  display: block;
+  font-size: var(--stat-size);
+  font-weight: var(--display-weight);
+  letter-spacing: var(--display-tracking);
+  line-height: 1;
+}
+
+.stat__unit {
+  font-size: 0.5em;
+  letter-spacing: 0;
+}
+
+.stat__label {
+  display: block;
+  margin-top: 12px;
+  font-size: var(--label-size);
+  font-weight: 500;
 }
 
 /* ---------- 필터 ---------- */
