@@ -2,7 +2,7 @@
 
 (() => {
   const ALL = 'All';
-  const PROPOSAL_LABEL = '경쟁 PT 제안';
+  const PROPOSAL_LABEL = 'PT 시안';
   const LANDING_CATEGORY = 'Landing Page';
 
   const filterList = document.querySelector('[data-filter-list]');
