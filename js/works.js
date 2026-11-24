@@ -161,4 +161,12 @@ const WORKS = [
     thumbnail: "images/works/jmella/thumb.jpg",
     images: ["images/works/jmella/landing-01.jpg"],
   },
+  {
+    brand: "락토핏",
+    title: "가정의 달",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/lactofit/landing-thumb.jpg",
+    images: ["images/works/lactofit/landing-01.jpg"],
+  },
 ];
