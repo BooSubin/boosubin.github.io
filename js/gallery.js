@@ -409,6 +409,28 @@
     stopPeek();
   });
 
+  /* ---------- 작업 이미지 보호 (가벼운 억제용) ----------
+     우클릭 메뉴(이미지 저장), 끌어서 저장, 개발자 도구·소스 보기·페이지 저장 단축키를 막는다.
+     공개 레포라 원본 파일 자체를 숨기지는 못한다. 쉽게 저장하는 길만 막는 장치다. */
+  document.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+  });
+
+  document.addEventListener('dragstart', (event) => {
+    if (event.target.closest('img')) event.preventDefault();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    const key = event.key.toLowerCase();
+    const mod = event.ctrlKey || event.metaKey;
+    const blocked =
+      event.key === 'F12' ||
+      (mod && event.shiftKey && ['i', 'j', 'c'].includes(key)) || // 개발자 도구 (Windows)
+      (event.metaKey && event.altKey && ['i', 'j', 'c', 'u'].includes(key)) || // 개발자 도구·소스 (Mac)
+      (mod && ['u', 's'].includes(key)); // 소스 보기, 페이지 저장
+    if (blocked) event.preventDefault();
+  });
+
   renderStats();
   renderFilter();
   renderGrid();
