@@ -80,8 +80,9 @@
     if (!container) return;
 
     const brands = new Set(works.map((work) => work.brand)).size;
-    const ads = works
-      .filter((work) => work.category === 'Display Ads')
+    // 랜딩페이지를 뺀 모든 작업물 장수 (광고·소셜 미디어 등, 앞으로 생길 카테고리 포함)
+    const creatives = works
+      .filter((work) => !isLanding(work))
       .reduce((sum, work) => sum + work.images.length, 0);
     const landings = works.filter(isLanding).length;
     const years = careerYears();
@@ -89,7 +90,7 @@
     const items = [
       years != null && { value: years, unit: '+', label: 'Years of Experience' },
       { value: brands, label: ['Brand', 'Brands'] },
-      { value: ads, label: ['Display Ad', 'Display Ads'] },
+      { value: creatives, label: ['Creative', 'Creatives'] },
       { value: landings, label: ['Landing Page', 'Landing Pages'] },
     ].filter((item) => item && item.value > 0); // 0인 칸은 숨긴다
 
