@@ -200,6 +200,8 @@
       card.dataset.index = i;
 
       const thumb = el('div', 'card__thumb');
+      // 썸네일 크롭 기준: crop 항목이 있으면 그대로, 없으면 랜딩은 위쪽·나머지는 가운데
+      thumb.dataset.crop = work.crop || (isLanding(work) ? 'top' : 'center');
       const src = work.thumbnail || (work.images && work.images[0]);
       thumb.appendChild(image(src, workName(work), `${work.brand}\n${work.category}`, 'fill'));
       if (work.type === '제안') thumb.appendChild(proposalBadge());
