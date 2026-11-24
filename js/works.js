@@ -48,6 +48,16 @@ const WORKS = [
     ],
   },
   {
+    brand: "스키니랩",
+    category: "Display Ads",
+    type: "집행",
+    thumbnail: "images/works/skinnylab/thumb.webp",
+    images: [
+      "images/works/skinnylab/display-01.webp",
+      "images/works/skinnylab/display-02.webp",
+    ],
+  },
+  {
     brand: "월드비전",
     category: "Social Media",
     type: "집행",
@@ -63,24 +73,13 @@ const WORKS = [
     ],
   },
   {
-    brand: "우리금융그룹",
-    category: "Social Media",
-    type: "집행",
-    thumbnail: "images/works/woori-financial/thumb.webp",
-    images: [
-      "images/works/woori-financial/social-01.jpg",
-      "images/works/woori-financial/social-02.webp",
-      "images/works/woori-financial/social-03.jpg",
-    ],
-  },
-  {
-    brand: "스키니랩",
+    brand: "락앤락",
     category: "Display Ads",
     type: "집행",
-    thumbnail: "images/works/skinnylab/thumb.webp",
+    thumbnail: "images/works/locknlock/thumb.webp",
     images: [
-      "images/works/skinnylab/display-01.webp",
-      "images/works/skinnylab/display-02.webp",
+      "images/works/locknlock/display-01.webp",
+      "images/works/locknlock/display-02.webp",
     ],
   },
   {
@@ -95,6 +94,24 @@ const WORKS = [
     ],
   },
   {
+    brand: "한화호텔앤드리조트",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/hanwha-resort/thumb.jpg",
+    images: ["images/works/hanwha-resort/landing-01.jpg"],
+  },
+  {
+    brand: "우리금융그룹",
+    category: "Social Media",
+    type: "집행",
+    thumbnail: "images/works/woori-financial/thumb.webp",
+    images: [
+      "images/works/woori-financial/social-01.jpg",
+      "images/works/woori-financial/social-02.webp",
+      "images/works/woori-financial/social-03.jpg",
+    ],
+  },
+  {
     brand: "웅진씽크빅",
     category: "Display Ads",
     type: "집행",
@@ -106,14 +123,11 @@ const WORKS = [
     ],
   },
   {
-    brand: "락앤락",
-    category: "Display Ads",
+    brand: "아이키쑤욱",
+    category: "Landing Page",
     type: "집행",
-    thumbnail: "images/works/locknlock/thumb.webp",
-    images: [
-      "images/works/locknlock/display-01.webp",
-      "images/works/locknlock/display-02.webp",
-    ],
+    thumbnail: "images/works/ikisuuk/thumb.webp",
+    images: ["images/works/ikisuuk/landing-01.webp"],
   },
   {
     brand: "오레브 제주",
@@ -125,13 +139,6 @@ const WORKS = [
       "images/works/oreve-jeju/display-02.webp",
       "images/works/oreve-jeju/display-03.webp",
     ],
-  },
-  {
-    brand: "한화호텔앤드리조트",
-    category: "Landing Page",
-    type: "집행",
-    thumbnail: "images/works/hanwha-resort/thumb.jpg",
-    images: ["images/works/hanwha-resort/landing-01.jpg"],
   },
   {
     brand: "락토핏",
@@ -148,11 +155,11 @@ const WORKS = [
     images: ["images/works/twatouch/landing-01.jpg"],
   },
   {
-    brand: "아이키쑤욱",
+    brand: "제이멜라",
     category: "Landing Page",
     type: "집행",
-    thumbnail: "images/works/ikisuuk/thumb.webp",
-    images: ["images/works/ikisuuk/landing-01.webp"],
+    thumbnail: "images/works/jmella/thumb.jpg",
+    images: ["images/works/jmella/landing-01.jpg"],
   },
   {
     brand: "아이클타임",
@@ -160,12 +167,5 @@ const WORKS = [
     type: "집행",
     thumbnail: "images/works/iclltime/thumb.jpg",
     images: ["images/works/iclltime/landing-01.jpg"],
-  },
-  {
-    brand: "제이멜라",
-    category: "Landing Page",
-    type: "집행",
-    thumbnail: "images/works/jmella/thumb.jpg",
-    images: ["images/works/jmella/landing-01.jpg"],
   },
 ];
