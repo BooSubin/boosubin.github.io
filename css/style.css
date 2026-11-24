@@ -234,6 +234,7 @@ img {
 }
 
 .hero__brands-label {
+  display: block;   /* 라벨 다음 줄에 브랜드 목록 */
   color: var(--color-text-sub);
 }
 
