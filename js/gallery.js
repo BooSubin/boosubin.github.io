@@ -431,6 +431,11 @@
     if (blocked) event.preventDefault();
   });
 
+  // 푸터 연도: 올해 연도로 자동 표시 (스크립트가 안 돌면 HTML에 적힌 2026이 그대로 보인다)
+  document.querySelectorAll('[data-year]').forEach((node) => {
+    node.textContent = new Date().getFullYear();
+  });
+
   renderStats();
   renderFilter();
   renderGrid();
