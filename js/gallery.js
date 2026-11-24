@@ -274,9 +274,10 @@
 
   viewerClose.addEventListener('click', () => viewer.close());
 
-  // 창 바깥(어두운 배경)을 누르면 닫기
+  // 작업 이미지·글자가 아닌 빈 곳을 누르면 닫기
   viewer.addEventListener('click', (event) => {
-    if (event.target === viewer) viewer.close();
+    if (event.target.closest('.viewer__grid-item, .viewer__landing, .viewer__head, .viewer__meta')) return;
+    viewer.close();
   });
 
   viewer.addEventListener('close', () => {

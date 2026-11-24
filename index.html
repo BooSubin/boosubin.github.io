@@ -47,12 +47,14 @@
   <!-- 작업 크게 보기 창 -->
   <dialog class="viewer" data-viewer aria-labelledby="viewer-title">
     <button class="viewer__close" type="button" data-viewer-close aria-label="닫기">✕</button>
-    <header class="viewer__head">
-      <h2 class="viewer__title" id="viewer-title" data-viewer-title></h2>
-      <p class="viewer__tags" data-viewer-tags></p>
-    </header>
-    <dl class="viewer__meta" data-viewer-meta></dl>
-    <div class="viewer__body" data-viewer-body></div>
+    <div class="viewer__inner">
+      <header class="viewer__head">
+        <h2 class="viewer__title" id="viewer-title" data-viewer-title></h2>
+        <p class="viewer__tags" data-viewer-tags></p>
+      </header>
+      <dl class="viewer__meta" data-viewer-meta></dl>
+      <div class="viewer__body" data-viewer-body></div>
+    </div>
   </dialog>
 </body>
 </html>
