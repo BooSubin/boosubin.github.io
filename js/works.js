@@ -115,4 +115,11 @@ const WORKS = [
     thumbnail: "images/works/jmella/thumb.jpg",
     images: ["images/works/jmella/landing-01.jpg"],
   },
+  {
+    brand: "트와터치",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/twatouch/thumb.jpg",
+    images: ["images/works/twatouch/landing-01.jpg"],
+  },
 ];
