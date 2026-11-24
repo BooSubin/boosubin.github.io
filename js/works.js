@@ -95,6 +95,17 @@ const WORKS = [
     ],
   },
   {
+    brand: "웅진씽크빅",
+    category: "Display Ads",
+    type: "집행",
+    thumbnail: "images/works/woongjin-thinkbig/thumb.webp",
+    images: [
+      "images/works/woongjin-thinkbig/display-01.jpg",
+      "images/works/woongjin-thinkbig/display-02.jpg",
+      "images/works/woongjin-thinkbig/display-03.jpg",
+    ],
+  },
+  {
     brand: "락앤락",
     category: "Display Ads",
     type: "집행",
