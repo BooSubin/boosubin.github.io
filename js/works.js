@@ -8,7 +8,7 @@
   title      작업 이름 (선택) 같은 브랜드 작업이 여러 개일 때 구분용. 예: "봄 프로모션"
   category   카테고리 (필수) 영문으로 적습니다. 예: "Banner", "Landing Page". 새 이름을 쓰면 필터 버튼이 자동으로 생깁니다.
              ("Landing Page"는 긴 이미지를 세로로 보여주는 방식으로 열립니다.)
-  year       연도 (필수) 숫자로 적습니다. 예: 2025
+  year       연도 (선택) 숫자로 적습니다. 예: 2025
   type       "집행" 또는 "제안" (필수) "제안"이면 'PT 시안' 표시가 붙습니다.
   role       맡은 역할 (선택)
   summary    한 줄 설명 (선택)
@@ -23,6 +23,16 @@
 const CAREER_START = "2020-01";
 
 const WORKS = [
+  {
+    brand: "Woori Financial Group",
+    category: "Social Media",
+    type: "집행",
+    images: [
+      "images/works/woori-financial/social-01.jpg",
+      "images/works/woori-financial/social-02.jpg",
+      "images/works/woori-financial/social-03.jpg",
+    ],
+  },
   {
     brand: "브랜드 A",
     category: "Banner",

@@ -33,6 +33,11 @@
     return work.title ? `${work.brand} · ${work.title}` : work.brand;
   }
 
+  // "카테고리 · 연도" (연도가 비어 있으면 카테고리만)
+  function workInfo(work) {
+    return [work.category, work.year].filter(Boolean).join(' · ');
+  }
+
   function isLanding(work) {
     return work.category === LANDING_CATEGORY;
   }
@@ -194,7 +199,7 @@
 
       const caption = el('div', 'card__caption');
       caption.appendChild(el('span', 'card__name', workName(work)));
-      caption.appendChild(el('span', 'card__info', `${work.category} · ${work.year}`));
+      caption.appendChild(el('span', 'card__info', workInfo(work)));
 
       card.append(thumb, caption);
       item.appendChild(card);
@@ -218,7 +223,7 @@
     viewerTitle.textContent = workName(work);
 
     viewerTags.replaceChildren();
-    viewerTags.appendChild(el('span', 'viewer__tag', `${work.category} · ${work.year}`));
+    viewerTags.appendChild(el('span', 'viewer__tag', workInfo(work)));
     if (work.type === '제안') viewerTags.appendChild(proposalBadge());
 
     viewerMeta.replaceChildren();
