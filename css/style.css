@@ -133,6 +133,21 @@ body {
   word-break: keep-all;
 }
 
+/* 포커스 표시: 브라우저 기본 파란 테두리와 휴대폰 탭 하이라이트는 모두 없앤다.
+   키보드(Tab)로 이동할 때만 얇은 흰 테두리로 위치를 알려준다 (마우스·터치로 누를 때는 안 보임) */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 1px solid rgb(255 255 255 / 0.6);
+  outline-offset: 3px;
+}
+
 html.is-locked {
   overflow: hidden;
 }
