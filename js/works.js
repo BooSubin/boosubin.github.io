@@ -95,6 +95,16 @@ const WORKS = [
     ],
   },
   {
+    brand: "락앤락",
+    category: "Display Ads",
+    type: "집행",
+    thumbnail: "images/works/locknlock/thumb.webp",
+    images: [
+      "images/works/locknlock/display-01.webp",
+      "images/works/locknlock/display-02.webp",
+    ],
+  },
+  {
     brand: "한화호텔앤드리조트",
     category: "Landing Page",
     type: "집행",
