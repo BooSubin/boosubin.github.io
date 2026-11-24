@@ -76,6 +76,7 @@
   --grid-gap: 16px;
   --radius: 8px;
   --viewer-max: 1100px;
+  --viewer-image-max: 360px;   /* 작업 창 안 이미지 한 칸의 최대 크기 */
   --landing-max: 860px;
 }
 
@@ -149,8 +150,7 @@ img {
 
 /* 작업 이미지 테두리 (이미지 안쪽에 1px) */
 .card__thumb img,
-.viewer__grid-button img,
-.viewer__single img,
+.viewer__grid-item img,
 .viewer__landing img {
   outline: 1px solid var(--color-image-border);
   outline-offset: -1px;
@@ -434,10 +434,6 @@ img {
   height: 100%;
 }
 
-.placeholder--square {
-  aspect-ratio: 1 / 1;
-}
-
 .placeholder--tall {
   aspect-ratio: 1 / 3;
 }
@@ -524,10 +520,10 @@ img {
   padding: 24px var(--page-gutter) var(--page-gutter);
 }
 
-/* 배너 여러 장 격자 */
+/* 배너·소셜 미디어 여러 장 격자 (한 칸은 --viewer-image-max보다 커지지 않는다) */
 .viewer__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, var(--viewer-image-max)));
   gap: 12px;
   margin: 0;
   padding: 0;
@@ -536,66 +532,21 @@ img {
 
 @media (min-width: 768px) {
   .viewer__grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, var(--viewer-image-max)));
   }
 }
 
-.viewer__grid-button {
-  display: block;
-  width: 100%;
+.viewer__grid-item {
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--color-placeholder);
 }
 
-.viewer__grid-button img {
+.viewer__grid-item img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-/* 한 장씩 크게 */
-.viewer__single {
-  display: flex;
-  justify-content: center;
-}
-
-.viewer__single img {
-  width: auto;
-  max-width: 100%;
-  max-height: 70dvh;
-}
-
-.viewer__single .placeholder {
-  width: min(100%, 70dvh);
-}
-
-.viewer__nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.viewer__nav-button {
-  padding: 6px 14px;
-  border: 1px solid var(--color-line);
-  border-radius: 999px;
-  font-size: 14px;
-}
-
-.viewer__nav-button:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
-.viewer__counter {
-  min-width: 56px;
-  font-size: 14px;
-  color: var(--color-text-sub);
-  text-align: center;
 }
 
 /* 랜딩페이지 세로 스크롤 */

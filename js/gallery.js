@@ -18,7 +18,7 @@
   const works = typeof WORKS !== 'undefined' ? WORKS : [];
 
   // 크게 보기 창의 현재 상태
-  const state = { work: null, mode: 'grid', index: 0 };
+  const state = { work: null };
 
   /* ---------- 공통 ---------- */
 
@@ -217,8 +217,6 @@
 
   function openViewer(work) {
     state.work = work;
-    state.mode = 'grid';
-    state.index = 0;
 
     viewerTitle.textContent = workName(work);
 
@@ -247,7 +245,6 @@
     const { work } = state;
     viewerBody.replaceChildren();
     if (isLanding(work)) renderLanding(work);
-    else if (state.mode === 'single') renderSingle(work);
     else renderImageGrid(work);
   }
 
@@ -260,59 +257,15 @@
     viewerBody.appendChild(wrap);
   }
 
-  // 배너 등: 여러 장을 격자로 보여주고, 누르면 한 장씩 크게
+  // 배너·소셜 미디어 등: 여러 장을 격자로 보여준다 (한 장씩 크게 보는 화면은 없음)
   function renderImageGrid(work) {
     const list = el('ul', 'viewer__grid');
     work.images.forEach((src, i) => {
-      const item = el('li');
-      const button = el('button', 'viewer__grid-button');
-      button.type = 'button';
-      button.setAttribute('aria-label', `${i + 1}번째 이미지 크게 보기`);
-      button.appendChild(image(src, `${workName(work)} ${i + 1}`, `${work.brand}\n${i + 1}`, 'fill'));
-      button.addEventListener('click', () => showSingle(i));
-      item.appendChild(button);
+      const item = el('li', 'viewer__grid-item');
+      item.appendChild(image(src, `${workName(work)} ${i + 1}`, `${work.brand}\n${i + 1}`, 'fill'));
       list.appendChild(item);
     });
     viewerBody.appendChild(list);
-  }
-
-  function renderSingle(work) {
-    const total = work.images.length;
-    const i = state.index;
-
-    const stage = el('div', 'viewer__single');
-    stage.appendChild(image(work.images[i], `${workName(work)} ${i + 1}`, `${work.brand}\n${i + 1}`, 'square'));
-
-    const nav = el('div', 'viewer__nav');
-    const prev = navButton('← 이전', () => showSingle(i - 1));
-    prev.disabled = i === 0;
-    const back = navButton('목록', () => showGrid());
-    const next = navButton('다음 →', () => showSingle(i + 1));
-    next.disabled = i === total - 1;
-    const counter = el('span', 'viewer__counter', `${i + 1} / ${total}`);
-
-    nav.append(prev, back, counter, next);
-    viewerBody.append(stage, nav);
-  }
-
-  function navButton(label, onClick) {
-    const button = el('button', 'viewer__nav-button', label);
-    button.type = 'button';
-    button.addEventListener('click', onClick);
-    return button;
-  }
-
-  function showSingle(index) {
-    const total = state.work.images.length;
-    if (index < 0 || index >= total) return;
-    state.mode = 'single';
-    state.index = index;
-    renderViewerBody();
-  }
-
-  function showGrid() {
-    state.mode = 'grid';
-    renderViewerBody();
   }
 
   viewerClose.addEventListener('click', () => viewer.close());
@@ -325,14 +278,6 @@
   viewer.addEventListener('close', () => {
     document.documentElement.classList.remove('is-locked');
     state.work = null;
-  });
-
-  // 한 장씩 볼 때 키보드 좌우 화살표로 넘기기
-  // (화면을 다시 그리면 포커스가 창 밖으로 빠질 수 있어 document에서 받는다)
-  document.addEventListener('keydown', (event) => {
-    if (!viewer.open || !state.work || state.mode !== 'single') return;
-    if (event.key === 'ArrowLeft') showSingle(state.index - 1);
-    if (event.key === 'ArrowRight') showSingle(state.index + 1);
   });
 
   renderStats();

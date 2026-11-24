@@ -24,7 +24,7 @@ const CAREER_START = "2020-01";
 
 const WORKS = [
   {
-    brand: "Woori Financial Group",
+    brand: "우리금융그룹",
     category: "Social Media",
     type: "집행",
     images: [
