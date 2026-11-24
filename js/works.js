@@ -95,6 +95,20 @@ const WORKS = [
     ],
   },
   {
+    brand: "한화호텔앤드리조트",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/hanwha-resort/thumb.jpg",
+    images: ["images/works/hanwha-resort/landing-01.jpg"],
+  },
+  {
+    brand: "트와터치",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/twatouch/thumb.jpg",
+    images: ["images/works/twatouch/landing-01.jpg"],
+  },
+  {
     brand: "아이키쑤욱",
     category: "Landing Page",
     type: "집행",
@@ -114,19 +128,5 @@ const WORKS = [
     type: "집행",
     thumbnail: "images/works/jmella/thumb.jpg",
     images: ["images/works/jmella/landing-01.jpg"],
-  },
-  {
-    brand: "트와터치",
-    category: "Landing Page",
-    type: "집행",
-    thumbnail: "images/works/twatouch/thumb.jpg",
-    images: ["images/works/twatouch/landing-01.jpg"],
-  },
-  {
-    brand: "한화호텔앤드리조트",
-    category: "Landing Page",
-    type: "집행",
-    thumbnail: "images/works/hanwha-resort/thumb.jpg",
-    images: ["images/works/hanwha-resort/landing-01.jpg"],
   },
 ];
