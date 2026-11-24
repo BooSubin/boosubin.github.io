@@ -240,4 +240,18 @@ const WORKS = [
       "images/works/multicampus/display-03.jpg",
     ],
   },
+  {
+    brand: "시코르",
+    category: "Display Ads",
+    type: "집행",
+    objective: "시코르 × 블룸 협업 메이크업 컬렉션 판매 유도",
+    hook: "아이돌 멤버가 직접 만든 'MADE' 컬렉션(아일릿 윤아, 써니, 노지선)과 시코르 단독 협업",
+    design: "모델 화보를 크게 쓰고 브라우저 창 모양 프레임에 제품·발색 컷을 띄워 디지털 무드 연출. 세 장을 같은 레이아웃과 민트 프레임으로 통일하고 모델과 제품만 바꿔 시리즈로 구성",
+    thumbnail: "images/works/chicor/thumb.webp",
+    images: [
+      "images/works/chicor/display-01.webp",
+      "images/works/chicor/display-02.webp",
+      "images/works/chicor/display-03.webp",
+    ],
+  },
 ];
