@@ -94,14 +94,38 @@
       { value: landings, label: ['Landing Page', 'Landing Pages'] },
     ].filter((item) => item && item.value > 0); // 0인 칸은 숨긴다
 
+    const counters = [];
     items.forEach(({ value, unit, label }) => {
       const item = el('li', 'stat');
-      const number = el('span', 'stat__value', String(value));
+      const number = el('span', 'stat__value');
+      const digits = document.createTextNode(String(value));
+      number.appendChild(digits);
       if (unit) number.appendChild(el('span', 'stat__unit', unit));
       // 1이면 단수(Brand), 2 이상이면 복수(Brands)
       const text = Array.isArray(label) ? label[value === 1 ? 0 : 1] : label;
       item.append(number, el('span', 'stat__label', text));
       container.appendChild(item);
+      counters.push({ node: digits, value });
+    });
+
+    countUp(counters);
+  }
+
+  /* 처음 열 때 숫자가 0부터 올라가는 효과 (짧고 조용하게) */
+  const COUNT = { delay: 300, duration: 1200, stagger: 120 };
+
+  function countUp(counters) {
+    if (reduceMotion.matches) return; // '동작 줄이기' 사용자는 처음부터 최종 숫자
+    const easeOut = (t) => 1 - Math.pow(1 - t, 3); // 처음엔 빠르게, 끝에서 천천히
+    counters.forEach(({ node, value }, i) => {
+      node.textContent = '0';
+      const start = performance.now() + COUNT.delay + i * COUNT.stagger;
+      const step = (now) => {
+        const t = Math.min(Math.max((now - start) / COUNT.duration, 0), 1);
+        node.textContent = String(Math.round(easeOut(t) * value));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
     });
   }
 

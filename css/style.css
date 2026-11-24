@@ -274,6 +274,7 @@ img {
 
 .stat__value {
   display: block;
+  font-variant-numeric: tabular-nums;   /* 숫자가 올라가는 동안 폭이 흔들리지 않게 */
   font-size: var(--stat-size);
   font-weight: var(--display-weight);
   letter-spacing: var(--display-tracking);
