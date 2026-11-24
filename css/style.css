@@ -199,6 +199,29 @@ img {
   font-size: calc(var(--accent-scale) * 1em);
   letter-spacing: 0;
   line-height: 1;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 0.04em;
+  text-underline-offset: 0.12em;
+  transition: text-decoration-color 200ms ease;
+}
+
+/* 마우스를 올리거나 키보드로 골랐을 때 밑줄이 나타난다 */
+.hero__accent:hover,
+.hero__accent:focus-visible {
+  text-decoration-color: currentColor;
+}
+
+/* click을 누르면 갤러리로 부드럽게 이동 (움직임 줄이기 설정 사용자는 바로 이동) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.archive {
+  scroll-margin-top: 24px;
 }
 
 /* 대표 브랜드 (라벨 크기로 작게) */
