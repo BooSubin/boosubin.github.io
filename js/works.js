@@ -101,4 +101,11 @@ const WORKS = [
     thumbnail: "images/works/ikisuuk/thumb.webp",
     images: ["images/works/ikisuuk/landing-01.webp"],
   },
+  {
+    brand: "아이클타임",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/iclltime/thumb.jpg",
+    images: ["images/works/iclltime/landing-01.jpg"],
+  },
 ];
