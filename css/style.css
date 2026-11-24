@@ -64,7 +64,7 @@
   --display-tracking: -0.035em;
   --label-size: 13px;                        /* 이름·라벨·숫자 설명 */
   --label-gap: 20px;                         /* 라벨과 큰 문장 사이 간격 */
-  --filter-size: clamp(24px, 2.6vw, 36px);   /* 필터 글자 */
+  --filter-size: clamp(24px, 2.6vw, 36px);   /* 필터 글자 (휴대폰에서는 아래에서 한 줄에 맞춤) */
 
   /* 필터 전환 애니메이션 시간 */
   --filter-out: 180ms;      /* 나가는 칸이 흐려지는 시간 */
@@ -293,6 +293,19 @@ img {
   padding: 5px 0;   /* 휴대폰에서도 누르는 영역이 44px 이상 되도록 */
   color: var(--color-filter-idle);
   transition: color 200ms ease;
+}
+
+/* 휴대폰: 필터 4개가 한 줄에 들어가도록 화면 폭에 맞춰 글자를 줄인다
+   (필터 한 줄 폭 ≈ 글자 크기 × 19.1. 카테고리가 늘어 넘치면 그때는 두 줄로 꺾인다) */
+@media (max-width: 767px) {
+  .filter {
+    --filter-size: min(24px, calc((100vw - 48px) / 19.6));
+    margin-bottom: 12px;
+  }
+
+  .filter__button {
+    padding: 12px 0;   /* 글자가 작아져도 누르는 영역은 44px 안팎으로 */
+  }
 }
 
 .filter__button:hover,
