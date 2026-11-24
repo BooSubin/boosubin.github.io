@@ -70,6 +70,15 @@ const WORKS = [
     ],
   },
   {
+    brand: "스키니랩",
+    category: "Display Ads",
+    type: "집행",
+    images: [
+      "images/works/skinnylab/display-01.webp",
+      "images/works/skinnylab/display-02.webp",
+    ],
+  },
+  {
     brand: "락토핏",
     category: "Display Ads",
     type: "집행",
