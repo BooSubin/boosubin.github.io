@@ -536,6 +536,11 @@ img {
   opacity: 1;
 }
 
+/* 제목·카테고리: 작업과 같이 가운데 정렬 */
+.viewer__head {
+  text-align: center;
+}
+
 .viewer__title {
   margin: 0 0 8px;
   font-size: 22px;
@@ -544,6 +549,7 @@ img {
 .viewer__tags {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   margin: 0;
@@ -564,6 +570,7 @@ img {
 
 .viewer__meta-row {
   display: flex;
+  justify-content: center;
   gap: 12px;
   font-size: 14px;
 }
