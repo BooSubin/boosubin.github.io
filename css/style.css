@@ -28,6 +28,11 @@
 
   --font-base: "SUIT Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
 
+  /* 상단 이름(BOO SUBIN): 화면 폭에 따라 48px~160px 사이에서 커진다 */
+  --title-size: clamp(48px, 11vw, 160px);
+  --title-weight: 900;
+  --title-tracking: -0.03em;
+
   --page-max: 1440px;
   --page-gutter: 16px;
   --grid-gap: 16px;
@@ -130,7 +135,10 @@ img {
 
 .site-title {
   margin: 0;
-  font-size: 24px;
+  font-size: var(--title-size);
+  font-weight: var(--title-weight);
+  letter-spacing: var(--title-tracking);
+  line-height: 0.9;
 }
 
 /* ---------- 필터 ---------- */
