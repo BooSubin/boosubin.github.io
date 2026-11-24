@@ -81,7 +81,7 @@
 
     const brands = new Set(works.map((work) => work.brand)).size;
     const ads = works
-      .filter((work) => work.category === 'Ads')
+      .filter((work) => work.category === 'Display Ads')
       .reduce((sum, work) => sum + work.images.length, 0);
     const landings = works.filter(isLanding).length;
     const years = careerYears();
@@ -89,7 +89,7 @@
     const items = [
       years != null && { value: years, unit: '+', label: 'Years of Experience' },
       { value: brands, label: 'Brands' },
-      { value: ads, label: 'Ads' },
+      { value: ads, label: 'Display Ads' },
       { value: landings, label: 'Landing Pages' },
     ].filter(Boolean);
 
