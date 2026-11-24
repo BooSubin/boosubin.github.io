@@ -835,6 +835,64 @@ img {
   aspect-ratio: 1 / 1;
 }
 
+/* 창 맨 아래: 이전·다음 작업 이동 */
+.viewer__worknav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  max-width: var(--viewer-max);
+  margin: 56px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-display);
+}
+
+.viewer__worknav-button {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 44px;
+  text-align: left;
+  color: var(--color-text);
+  transition: opacity 200ms ease;
+}
+
+.viewer__worknav-button--next {
+  grid-column: 3;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.viewer__worknav-button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.viewer__worknav-button:hover:not(:disabled) .viewer__worknav-name {
+  color: var(--color-text);
+}
+
+.viewer__worknav-label {
+  font-size: var(--label-size);
+  color: var(--color-text-sub);
+}
+
+.viewer__worknav-name {
+  font-family: var(--font-base);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-hover);
+  transition: color 200ms ease;
+}
+
+.viewer__worknav-count {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: var(--label-size);
+  color: var(--color-text-sub);
+}
+
 /* 랜딩페이지 세로 스크롤 */
 .viewer__landing {
   max-width: var(--landing-max);

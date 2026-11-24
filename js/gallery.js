@@ -13,12 +13,14 @@
   const viewerMeta = viewer.querySelector('[data-viewer-meta]');
   const viewerBody = viewer.querySelector('[data-viewer-body]');
   const viewerClose = viewer.querySelector('[data-viewer-close]');
+  const viewerNav = viewer.querySelector('[data-viewer-nav]');
+  const viewerInner = viewer.querySelector('.viewer__inner');
 
   // 작업 목록은 js/works.js 에 있다
   const works = typeof WORKS !== 'undefined' ? WORKS : [];
 
   // 크게 보기 창의 현재 상태
-  const state = { work: null };
+  const state = { work: null, index: -1 };
 
   /* ---------- 공통 ---------- */
 
@@ -242,14 +244,57 @@
     grid.addEventListener('click', (event) => {
       const card = event.target.closest('.card');
       if (!card) return;
-      openViewer(works[Number(card.dataset.index)]);
+      openViewer(Number(card.dataset.index));
     });
   }
 
   /* ---------- 크게 보기 창 ---------- */
 
-  function openViewer(work) {
+  // 지금 필터에서 보이는 작업들의 순서 (작업 창의 이전·다음 이동 기준)
+  function visibleOrder() {
+    return [...grid.querySelectorAll('[data-card]')]
+      .filter((item) => !item.hidden)
+      .map((item) => Number(item.querySelector('.card').dataset.index));
+  }
+
+  let historyPushed = false; // 창을 열 때 브라우저 기록을 한 칸 쌓았는지
+
+  function openViewer(index) {
+    renderViewer(index);
+    document.documentElement.classList.add('is-locked');
+    viewer.showModal();
+    viewer.scrollTop = 0;
+    // 휴대폰 뒤로 가기로 창만 닫히도록 기록을 한 칸 쌓는다
+    if (!historyPushed) {
+      history.pushState({ viewer: true }, '');
+      historyPushed = true;
+    }
+  }
+
+  // 창은 그대로 두고 다른 작업으로 바꾸기
+  function goToWork(step) {
+    const order = visibleOrder();
+    const pos = order.indexOf(state.index);
+    const next = order[pos + step];
+    if (next == null) return;
+    stopPeek();
+    renderViewer(next);
+    viewer.scrollTop = 0;
+    // 바뀔 때 살짝 떠오르는 움직임 다시 재생
+    viewerInner.style.animation = 'none';
+    void viewerInner.offsetWidth;
+    viewerInner.style.animation = '';
+  }
+
+  // 닫기 (쌓아둔 기록 정리는 아래 'close' 이벤트에서 한 번에 한다)
+  function requestClose() {
+    viewer.close();
+  }
+
+  function renderViewer(index) {
+    const work = works[index];
     state.work = work;
+    state.index = index;
 
     viewerTitle.textContent = workName(work);
 
@@ -265,9 +310,31 @@
     viewerMeta.hidden = !viewerMeta.children.length;
 
     renderViewerBody();
-    document.documentElement.classList.add('is-locked');
-    viewer.showModal();
-    viewer.scrollTop = 0;
+    renderWorkNav();
+  }
+
+  // 창 맨 아래: 이전·다음 작업 이동 (브랜드 이름 표시)
+  function renderWorkNav() {
+    const order = visibleOrder();
+    const pos = order.indexOf(state.index);
+    viewerNav.replaceChildren();
+    [[-1, 'prev', '←'], [1, 'next', '→']].forEach(([step, dir, arrow]) => {
+      const target = order[pos + step];
+      const button = el('button', `viewer__worknav-button viewer__worknav-button--${dir}`);
+      button.type = 'button';
+      if (target == null) {
+        button.disabled = true;
+        button.append(el('span', 'viewer__worknav-label', dir === 'prev' ? 'Prev' : 'Next'));
+      } else {
+        const name = workName(works[target]);
+        button.setAttribute('aria-label', `${dir === 'prev' ? '이전' : '다음'} 작업: ${name}`);
+        const label = el('span', 'viewer__worknav-label', dir === 'prev' ? `${arrow} Prev` : `Next ${arrow}`);
+        button.append(label, el('span', 'viewer__worknav-name', name));
+        button.addEventListener('click', () => goToWork(step));
+      }
+      viewerNav.appendChild(button);
+    });
+    viewerNav.appendChild(el('span', 'viewer__worknav-count', `${pos + 1} / ${order.length}`));
   }
 
   function addMeta(term, description) {
@@ -421,15 +488,52 @@
     viewerBody.appendChild(list);
   }
 
-  viewerClose.addEventListener('click', () => viewer.close());
+  viewerClose.addEventListener('click', () => requestClose());
 
-  // 작업 이미지·글자가 아닌 빈 곳을 누르면 닫기
-  viewer.addEventListener('click', (event) => {
-    if (event.target.closest('.viewer__grid-item, .viewer__landing, .viewer__panorama-wrap, .viewer__head, .viewer__meta')) return;
+  // 브라우저·휴대폰 뒤로 가기: 창이 열려 있으면 창만 닫는다
+  window.addEventListener('popstate', () => {
+    if (!viewer.open) return;
+    historyPushed = false;
     viewer.close();
   });
 
+  // 키보드 좌우 화살표로 이전·다음 작업
+  document.addEventListener('keydown', (event) => {
+    if (!viewer.open) return;
+    if (event.key === 'ArrowLeft') goToWork(-1);
+    if (event.key === 'ArrowRight') goToWork(1);
+  });
+
+  // 휴대폰에서 좌우로 밀어 이전·다음 작업 (가로로 넘기는 캐러셀 위에서는 캐러셀이 우선)
+  let touch = null;
+  viewer.addEventListener('touchstart', (event) => {
+    if (event.target.closest('.viewer__panorama')) { touch = null; return; }
+    const t = event.touches[0];
+    touch = { x: t.clientX, y: t.clientY };
+  }, { passive: true });
+  viewer.addEventListener('touchend', (event) => {
+    if (!touch) return;
+    const t = event.changedTouches[0];
+    const dx = t.clientX - touch.x;
+    const dy = t.clientY - touch.y;
+    touch = null;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) goToWork(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  // 작업 이미지·글자가 아닌 빈 곳을 누르면 닫기
+  viewer.addEventListener('click', (event) => {
+    // 누른 버튼이 화면을 다시 그리며 사라진 경우(이전·다음 이동)는 빈 곳 클릭이 아니다
+    if (!event.target.isConnected) return;
+    if (event.target.closest('.viewer__grid-item, .viewer__landing, .viewer__panorama-wrap, .viewer__head, .viewer__meta, .viewer__worknav')) return;
+    requestClose();
+  });
+
   viewer.addEventListener('close', () => {
+    // 버튼·Esc·빈 곳으로 닫았으면, 열 때 쌓은 기록 한 칸을 되돌린다 (뒤로 가기로 닫았으면 이미 되돌아간 상태)
+    if (historyPushed) {
+      historyPushed = false;
+      history.back();
+    }
     document.documentElement.classList.remove('is-locked');
     state.work = null;
     stopPeek();
