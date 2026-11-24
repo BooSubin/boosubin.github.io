@@ -277,7 +277,7 @@
     strip.appendChild(track);
     enableSideScroll(strip);
 
-    // 좌우 화살표: 항상 떠 있고, 해당 방향 끝에 닿았을 때만 숨는다. 누르면 한 화면의 80%만큼 넘어간다
+    // 좌우 화살표: 진행 막대 오른쪽에 둔다(그림을 가리지 않게). 끝에 닿으면 흐려진다. 누르면 한 화면의 80%만큼 넘어간다
     const arrow = (dir, label, text) => {
       const button = el('button', `viewer__panorama-arrow viewer__panorama-arrow--${dir}`, text);
       button.type = 'button';
@@ -298,16 +298,16 @@
     const bar = el('span', 'viewer__panorama-bar');
     progress.appendChild(bar);
 
-    const frame = el('div', 'viewer__panorama-frame');
-    frame.append(strip, prev, next);
+    const controls = el('div', 'viewer__panorama-controls');
+    controls.append(progress, prev, next);
     const wrap = el('div', 'viewer__panorama-wrap');
-    wrap.append(frame, progress);
+    wrap.append(strip, controls);
     viewerBody.appendChild(wrap);
 
     const update = () => {
       const max = strip.scrollWidth - strip.clientWidth;
-      wrap.classList.toggle('is-start', strip.scrollLeft <= 1);
-      wrap.classList.toggle('is-end', strip.scrollLeft >= max - 1);
+      prev.disabled = strip.scrollLeft <= 1;
+      next.disabled = strip.scrollLeft >= max - 1;
       bar.style.width = `${(strip.clientWidth / strip.scrollWidth) * 100}%`;
       bar.style.left = `${(strip.scrollLeft / strip.scrollWidth) * 100}%`;
     };
