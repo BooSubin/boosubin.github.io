@@ -580,8 +580,8 @@ img {
   height: calc(var(--loading-mark-size) * 4 / 3);
   margin: auto;
   background: var(--color-text-sub);
-  -webkit-mask: url("../images/brand/b-mark.png") center / contain no-repeat;
-  mask: url("../images/brand/b-mark.png") center / contain no-repeat;
+  -webkit-mask: url("../images/brand/b-mark.png") center / auto 100% no-repeat;
+  mask: url("../images/brand/b-mark.png") center / auto 100% no-repeat;
   opacity: 0.25;
 }
 
