@@ -13,11 +13,27 @@
 </head>
 <body>
   <header class="site-header">
-    <h1 class="site-name">BOO SUBIN</h1>
+    <!-- 맨 위 정보 줄 (4칸) -->
+    <div class="intro">
+      <h1 class="intro__name">BOO SUBIN</h1>
+      <p class="intro__item">
+        <span class="label">(Role)</span>
+        Performance Designer
+      </p>
+      <div class="intro__item">
+        <span class="label">(Selected Brands)</span>
+        <ul class="intro__list">
+          <li>Banyan Tree</li>
+          <li>World Vision</li>
+          <li>Woori Bank</li>
+          <li>Lock&amp;Lock</li>
+        </ul>
+      </div>
+      <!-- 넷째 칸: 비워둠 (나중에 연락처·이력서 링크 자리) -->
+    </div>
+
     <div class="hero">
-      <span class="hero__label">(Performance Designer)</span>
       <p class="hero__text">Design that earns the <a class="hero__accent" href="#works">click</a>.</p>
-      <p class="hero__brands"><span class="hero__brands-label">(Selected Brands)</span> Banyan Tree, World Vision, Woori Bank</p>
     </div>
     <!-- 숫자 줄: js/gallery.js가 작업 목록을 세어서 채운다 -->
     <ul class="stats" data-stats></ul>
