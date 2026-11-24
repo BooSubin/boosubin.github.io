@@ -273,7 +273,57 @@
     });
     strip.appendChild(track);
     enableSideScroll(strip);
-    viewerBody.appendChild(strip);
+
+    // 오른쪽 끝 화살표: 옆으로 더 있다는 표시. 누르면 한 화면만큼 넘어간다
+    const hint = el('button', 'viewer__panorama-hint', '→');
+    hint.type = 'button';
+    hint.setAttribute('aria-label', '옆으로 넘겨 보기');
+    hint.addEventListener('click', () => {
+      strip.scrollBy({ left: strip.clientWidth * 0.8, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    });
+
+    const wrap = el('div', 'viewer__panorama-wrap');
+    wrap.append(strip, hint);
+    viewerBody.appendChild(wrap);
+
+    // 사용자가 직접 넘기기 시작하면 화살표를 숨긴다 (끝까지 가면 역시 숨김)
+    strip.addEventListener('scroll', () => {
+      if (peek.running) return;
+      if (strip.scrollLeft > 24) wrap.classList.add('is-scrolled');
+    });
+
+    // 창이 열리고 잠시 뒤, 띠가 오른쪽으로 살짝 밀렸다 돌아온다 (옆으로 이어진다는 힌트)
+    if (!reduceMotion.matches) {
+      peek.timer = setTimeout(() => peekStrip(strip), PEEK.delay);
+      ['pointerdown', 'wheel', 'touchstart'].forEach((type) =>
+        strip.addEventListener(type, stopPeek, { passive: true }));
+    }
+  }
+
+  /* 살짝 밀었다 돌아오는 힌트 움직임 */
+  const PEEK = { delay: 700, distance: 140, duration: 1100 };
+  const peek = { timer: null, frame: null, running: false };
+
+  function peekStrip(strip) {
+    if (strip.scrollLeft !== 0) return;
+    const start = performance.now();
+    peek.running = true;
+    const step = (now) => {
+      const t = Math.min((now - start) / PEEK.duration, 1);
+      // 0 → 1 → 0 으로 부드럽게 (사인 곡선)
+      strip.scrollLeft = Math.sin(t * Math.PI) * PEEK.distance;
+      if (t < 1) peek.frame = requestAnimationFrame(step);
+      else stopPeek();
+    };
+    peek.frame = requestAnimationFrame(step);
+  }
+
+  function stopPeek() {
+    clearTimeout(peek.timer);
+    cancelAnimationFrame(peek.frame);
+    peek.timer = null;
+    peek.frame = null;
+    peek.running = false;
   }
 
   // 마우스 휠(위아래)로도 옆으로 넘어가게, 마우스로 끌어서도 넘길 수 있게
@@ -322,13 +372,14 @@
 
   // 작업 이미지·글자가 아닌 빈 곳을 누르면 닫기
   viewer.addEventListener('click', (event) => {
-    if (event.target.closest('.viewer__grid-item, .viewer__landing, .viewer__panorama, .viewer__head, .viewer__meta')) return;
+    if (event.target.closest('.viewer__grid-item, .viewer__landing, .viewer__panorama-wrap, .viewer__head, .viewer__meta')) return;
     viewer.close();
   });
 
   viewer.addEventListener('close', () => {
     document.documentElement.classList.remove('is-locked');
     state.work = null;
+    stopPeek();
   });
 
   renderStats();
