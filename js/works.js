@@ -260,6 +260,16 @@ const WORKS = [
     images: ["images/works/iclltime/landing-01.jpg"],
   },
   {
+    brand: "관절보궁",
+    category: "Landing Page",
+    type: "집행",
+    objective: "중장년 대상 관절 건강기능식품 이벤트 구매 유도",
+    hook: "누적 판매 700만 개 실적, '300명에게 쏩니다' 선착순 한정 혜택, 만족도 98% 실구매 후기, '이 페이지에서만' 혜택",
+    design: "붉은 무대 커튼과 금색 리본으로 이벤트 무대를 연출해 제품을 고급 선물세트처럼 보이게 구성. 실구매자 사진을 격자로 모아 중장년 고객이 바로 공감할 신뢰 구간을 만듦",
+    thumbnail: "images/works/joint-bogung/thumb.jpg",
+    images: ["images/works/joint-bogung/landing-01.jpg"],
+  },
+  {
     brand: "트와터치",
     category: "Landing Page",
     type: "집행",
