@@ -178,6 +178,17 @@ img {
   line-height: 1.08;
 }
 
+/* 대표 브랜드 (라벨 크기로 작게) */
+.hero__brands {
+  margin: 24px 0 0;
+  font-size: var(--label-size);
+  font-weight: 500;
+}
+
+.hero__brands-label {
+  color: var(--color-text-sub);
+}
+
 /* 숫자 줄 */
 .stats {
   display: grid;
