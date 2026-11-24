@@ -88,4 +88,11 @@ const WORKS = [
       "images/works/lactofit/display-03.jpg",
     ],
   },
+  {
+    brand: "아이키쑤욱",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/ikisuuk/thumbnail.jpg",
+    images: ["images/works/ikisuuk/landing-01.jpg"],
+  },
 ];
