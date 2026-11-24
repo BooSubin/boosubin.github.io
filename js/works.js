@@ -15,8 +15,7 @@
   thumbnail  썸네일 이미지 경로 (선택) 800×800px 권장. 비워두면 images 첫 장의 윗부분을 씁니다.
   images     이미지 경로 목록 (필수) 광고·소셜 미디어는 여러 장, 랜딩은 보통 1장.
 
-  지금 들어 있는 항목은 화면 확인용 가짜 데이터입니다.
-  이미지 파일이 아직 없어서 회색 상자로 보입니다.
+  이미지 파일이 없거나 경로가 틀리면 그 자리는 회색 상자로 보입니다.
 */
 
 // 경력 시작 연월. 상단 숫자 줄의 경력 연수를 이 날짜부터 자동으로 계산합니다.
@@ -34,84 +33,6 @@ const WORKS = [
       "images/works/woori-financial/social-01.jpg",
       "images/works/woori-financial/social-02.jpg",
       "images/works/woori-financial/social-03.jpg",
-    ],
-  },
-  {
-    brand: "브랜드 A",
-    category: "Display Ads",
-    year: 2025,
-    type: "집행",
-    role: "배너 디자인 전담",
-    summary: "시즌 프로모션 온라인 광고 배너",
-    images: [
-      "images/works/brand-a/banner-01.jpg",
-      "images/works/brand-a/banner-02.jpg",
-      "images/works/brand-a/banner-03.jpg",
-      "images/works/brand-a/banner-04.jpg",
-      "images/works/brand-a/banner-05.jpg",
-      "images/works/brand-a/banner-06.jpg",
-    ],
-  },
-  {
-    brand: "브랜드 B",
-    title: "신제품 출시",
-    category: "Landing Page",
-    year: 2025,
-    type: "집행",
-    role: "랜딩페이지 디자인",
-    summary: "신제품 출시 이벤트 랜딩페이지",
-    images: ["images/works/brand-b/landing-01.jpg"],
-  },
-  {
-    brand: "브랜드 C",
-    category: "Display Ads",
-    year: 2024,
-    type: "집행",
-    role: "배너 디자인 전담",
-    images: [
-      "images/works/brand-c/banner-01.jpg",
-      "images/works/brand-c/banner-02.jpg",
-      "images/works/brand-c/banner-03.jpg",
-      "images/works/brand-c/banner-04.jpg",
-      "images/works/brand-c/banner-05.jpg",
-      "images/works/brand-c/banner-06.jpg",
-    ],
-  },
-  {
-    brand: "브랜드 D",
-    category: "Display Ads",
-    year: 2024,
-    type: "제안",
-    role: "제안 시안 디자인",
-    summary: "브랜드 캠페인 PT 배너 시안",
-    images: [
-      "images/works/brand-d/banner-01.jpg",
-      "images/works/brand-d/banner-02.jpg",
-      "images/works/brand-d/banner-03.jpg",
-      "images/works/brand-d/banner-04.jpg",
-    ],
-  },
-  {
-    brand: "브랜드 E",
-    title: "회원 가입 이벤트",
-    category: "Landing Page",
-    year: 2024,
-    type: "제안",
-    role: "랜딩페이지 디자인",
-    images: ["images/works/brand-e/landing-01.jpg"],
-  },
-  {
-    brand: "브랜드 B",
-    category: "Display Ads",
-    year: 2023,
-    type: "집행",
-    images: [
-      "images/works/brand-b/banner-01.jpg",
-      "images/works/brand-b/banner-02.jpg",
-      "images/works/brand-b/banner-03.jpg",
-      "images/works/brand-b/banner-04.jpg",
-      "images/works/brand-b/banner-05.jpg",
-      "images/works/brand-b/banner-06.jpg",
     ],
   },
 ];

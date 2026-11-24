@@ -88,16 +88,18 @@
 
     const items = [
       years != null && { value: years, unit: '+', label: 'Years of Experience' },
-      { value: brands, label: 'Brands' },
-      { value: ads, label: 'Display Ads' },
-      { value: landings, label: 'Landing Pages' },
-    ].filter(Boolean);
+      { value: brands, label: ['Brand', 'Brands'] },
+      { value: ads, label: ['Display Ad', 'Display Ads'] },
+      { value: landings, label: ['Landing Page', 'Landing Pages'] },
+    ].filter((item) => item && item.value > 0); // 0인 칸은 숨긴다
 
     items.forEach(({ value, unit, label }) => {
       const item = el('li', 'stat');
       const number = el('span', 'stat__value', String(value));
       if (unit) number.appendChild(el('span', 'stat__unit', unit));
-      item.append(number, el('span', 'stat__label', label));
+      // 1이면 단수(Brand), 2 이상이면 복수(Brands)
+      const text = Array.isArray(label) ? label[value === 1 ? 0 : 1] : label;
+      item.append(number, el('span', 'stat__label', text));
       container.appendChild(item);
     });
   }
