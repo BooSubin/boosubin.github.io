@@ -485,7 +485,6 @@ img {
 /* 썸네일에 마우스를 올렸을 때: 이미지가 살짝 커지고 밝아지며, 이름이 흰색으로
    (마우스가 있는 기기에서만. 휴대폰은 누르는 순간 바로 열리니 적용하지 않는다) */
 .card__thumb img {
-  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: transform;   /* 확대를 그래픽 처리로 넘겨서, 매 프레임 이미지를 다시 그리지 않게 */
 }
 
@@ -560,7 +559,8 @@ img {
 }
 
 .media img {
-  transition: opacity 400ms ease;
+  /* 나타날 때 투명도 + 썸네일 hover 확대. (한 곳에 같이 적어야 서로 덮어쓰지 않는다) */
+  transition: opacity 400ms ease, transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .media.is-loading {
