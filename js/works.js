@@ -30,7 +30,6 @@ const WORKS = [
   {
     brand: "반얀트리",
     category: "Social Media",
-    year: 2024,
     type: "집행",
     layout: "panorama",
     images: [
