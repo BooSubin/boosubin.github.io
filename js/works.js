@@ -168,4 +168,15 @@ const WORKS = [
     thumbnail: "images/works/iclltime/thumb.jpg",
     images: ["images/works/iclltime/landing-01.jpg"],
   },
+  {
+    brand: "멀티캠퍼스",
+    category: "Display Ads",
+    type: "집행",
+    thumbnail: "images/works/multicampus/thumb.webp",
+    images: [
+      "images/works/multicampus/display-01.jpg",
+      "images/works/multicampus/display-02.jpg",
+      "images/works/multicampus/display-03.jpg",
+    ],
+  },
 ];
