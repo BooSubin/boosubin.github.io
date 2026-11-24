@@ -30,6 +30,20 @@ const CATEGORY_ORDER = ["Display Ads", "Social Media", "Landing Page"];
 
 const WORKS = [
   {
+    brand: "월드비전",
+    category: "Social Media",
+    type: "집행",
+    layout: "panorama",
+    images: [
+      "images/works/world-vision/social-01.jpg",
+      "images/works/world-vision/social-02.jpg",
+      "images/works/world-vision/social-03.jpg",
+      "images/works/world-vision/social-04.jpg",
+      "images/works/world-vision/social-05.jpg",
+      "images/works/world-vision/social-06.jpg",
+    ],
+  },
+  {
     brand: "반얀트리",
     category: "Social Media",
     type: "집행",
