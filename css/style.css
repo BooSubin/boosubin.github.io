@@ -9,6 +9,7 @@
   --color-badge-bg: #111111;
   --color-badge-text: #ffffff;
   --color-backdrop: rgb(0 0 0 / 0.6);
+  --color-scrollbar: #cccccc;
 
   --font-base: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
 
@@ -37,6 +38,28 @@
 /* 내용이 짧아 스크롤바가 사라져도 그 자리를 비워둬서 가로 너비가 흔들리지 않게 */
 html {
   scrollbar-gutter: stable;
+}
+
+/* 얇은 스크롤바 (페이지와 작업 창 공통) */
+html,
+.viewer {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar) transparent;
+}
+
+/* Safari 등 위 설정을 모르는 브라우저용 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-scrollbar);
+  border-radius: 3px;
 }
 
 body {
