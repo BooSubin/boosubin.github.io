@@ -22,6 +22,9 @@
 // 경력 시작 연월. 상단 숫자 줄의 경력 연수를 이 날짜부터 자동으로 계산합니다.
 const CAREER_START = "2020-01";
 
+// 필터 버튼 순서. 여기 없는 카테고리는 맨 뒤에 붙습니다.
+const CATEGORY_ORDER = ["Banner", "Social Media", "Landing Page"];
+
 const WORKS = [
   {
     brand: "우리금융그룹",

@@ -104,12 +104,16 @@
 
   /* ---------- 필터 ---------- */
 
+  // 필터 순서: works.js의 CATEGORY_ORDER 순서대로, 거기 없는 카테고리는 뒤에 나온 순서대로
   function categories() {
-    const list = [];
+    const order = typeof CATEGORY_ORDER !== 'undefined' ? CATEGORY_ORDER : [];
+    const used = [];
     works.forEach((work) => {
-      if (!list.includes(work.category)) list.push(work.category);
+      if (!used.includes(work.category)) used.push(work.category);
     });
-    return [ALL, ...list];
+    const listed = order.filter((category) => used.includes(category));
+    const rest = used.filter((category) => !order.includes(category));
+    return [ALL, ...listed, ...rest];
   }
 
   function renderFilter() {
