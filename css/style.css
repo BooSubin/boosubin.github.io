@@ -60,6 +60,7 @@
   --display-weight: 400;                     /* 큰 글씨는 굵게 하지 않고 크기로 힘을 준다 */
   --display-tracking: -0.035em;
   --label-size: 13px;                        /* 이름·라벨·숫자 설명 */
+  --label-gap: 20px;                         /* 큰 문장 위아래 작은 글씨와의 간격 */
 
   --page-max: 1440px;
   --page-gutter: 16px;
@@ -172,14 +173,15 @@ img {
 
 /* 큰 문장 */
 .hero {
-  margin: clamp(64px, 10vw, 140px) 0 0;
+  margin: clamp(56px, 7vw, 96px) 0 0;   /* 이름 → 라벨 */
 }
 
 .hero__label {
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: var(--label-gap);   /* 라벨 → 큰 문장 */
   font-size: var(--label-size);
   font-weight: 500;
+  color: var(--color-text-sub);      /* 괄호 라벨은 모두 회색 */
 }
 
 .hero__text {
@@ -226,7 +228,7 @@ img {
 
 /* 대표 브랜드 (라벨 크기로 작게) */
 .hero__brands {
-  margin: 24px 0 0;
+  margin: var(--label-gap) 0 0;      /* 큰 문장 → 브랜드 (라벨과 같은 간격) */
   font-size: var(--label-size);
   font-weight: 500;
 }
