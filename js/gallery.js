@@ -86,18 +86,17 @@
     if (!container) return;
 
     const brands = new Set(works.map((work) => work.brand)).size;
-    // 랜딩페이지를 뺀 모든 작업물 장수 (광고·소셜 미디어 등, 앞으로 생길 카테고리 포함)
-    const creatives = works
-      .filter((work) => !isLanding(work))
-      .reduce((sum, work) => sum + work.images.length, 0);
-    const landings = works.filter(isLanding).length;
+    // 작업물 전체: 광고·소셜 미디어 등은 장수, 랜딩페이지는 한 편을 1개로 센다
+    const creatives = works.reduce((sum, work) => sum + (isLanding(work) ? 1 : work.images.length), 0);
+    // 업종 수: works.js의 industry 값 종류
+    const industries = new Set(works.map((work) => work.industry).filter(Boolean)).size;
     const years = careerYears();
 
     const items = [
       years != null && { value: years, unit: '+', label: 'Years of Experience' },
       { value: brands, label: ['Brand', 'Brands'] },
       { value: creatives, label: ['Creative', 'Creatives'] },
-      { value: landings, label: ['Landing Page', 'Landing Pages'] },
+      { value: industries, label: ['Industry', 'Industries'] },
     ].filter((item) => item && item.value > 0); // 0인 칸은 숨긴다
 
     const counters = [];

@@ -5,6 +5,9 @@
 
   항목 설명
   brand      브랜드 이름 (필수)
+  industry   업종 (선택) 영문으로 적습니다. 상단 숫자 줄의 Industries 칸이 이 값의 종류 수를 셉니다.
+             지금 쓰는 값: Hospitality, Health Supplements, Beauty, Education, Finance, Non-profit,
+             Fashion, Living, Outdoor & Electronics, Medical
   title      작업 이름 (선택) 같은 브랜드 작업이 여러 개일 때 구분용. 예: "봄 프로모션"
   category   카테고리 (필수) 영문으로 적습니다. 예: "Display Ads", "Social Media", "Landing Page". 새 이름을 쓰면 필터 버튼이 자동으로 생깁니다.
              ("Landing Page"는 긴 이미지를 세로로 보여주는 방식으로 열립니다.)
@@ -34,6 +37,7 @@ const CATEGORY_ORDER = ["Display Ads", "Social Media", "Landing Page"];
 const WORKS = [
   {
     brand: "반얀트리",
+    industry: "Hospitality",
     category: "Social Media",
     type: "집행",
     objective: "디자인 스토리로 호텔의 브랜드 가치 전달",
@@ -54,6 +58,7 @@ const WORKS = [
   },
   {
     brand: "월드비전",
+    industry: "Non-profit",
     category: "Social Media",
     type: "집행",
     objective: "글로벌 6K 캠페인 기부 참여 유도",
@@ -72,6 +77,7 @@ const WORKS = [
   },
   {
     brand: "시코르",
+    industry: "Beauty",
     category: "Display Ads",
     type: "집행",
     objective: "시코르 단독 블룸 협업 컬렉션 판매",
@@ -86,6 +92,7 @@ const WORKS = [
   },
   {
     brand: "쿠디",
+    industry: "Outdoor & Electronics",
     category: "Display Ads",
     type: "집행",
     objective: "캠핑 조명·스피커 판매",
@@ -100,6 +107,7 @@ const WORKS = [
   },
   {
     brand: "오레브 제주",
+    industry: "Hospitality",
     category: "Display Ads",
     type: "집행",
     objective: "프라이빗 회원권 안내자료 신청",
@@ -114,6 +122,7 @@ const WORKS = [
   },
   {
     brand: "페어라이어",
+    industry: "Fashion",
     category: "Social Media",
     type: "집행",
     crop: "top",
@@ -129,6 +138,7 @@ const WORKS = [
   },
   {
     brand: "멀티캠퍼스",
+    industry: "Education",
     category: "Display Ads",
     type: "집행",
     objective: "비전공자 대상 부트캠프 수강 신청",
@@ -143,6 +153,7 @@ const WORKS = [
   },
   {
     brand: "한화호텔앤드리조트",
+    industry: "Hospitality",
     category: "Landing Page",
     type: "집행",
     objective: "하이엔드 리조트 멤버십 가입 유도",
@@ -153,6 +164,7 @@ const WORKS = [
   },
   {
     brand: "락토핏",
+    industry: "Health Supplements",
     category: "Display Ads",
     type: "집행",
     objective: "올리브영 더블기획 세트 판매",
@@ -167,6 +179,7 @@ const WORKS = [
   },
   {
     brand: "우리금융그룹",
+    industry: "Finance",
     category: "Social Media",
     type: "집행",
     objective: "공식 인스타그램으로 그룹 브랜드 친밀도 제고",
@@ -181,6 +194,7 @@ const WORKS = [
   },
   {
     brand: "스키니랩",
+    industry: "Health Supplements",
     category: "Display Ads",
     type: "집행",
     objective: "올리브영 할인 행사 판매",
@@ -194,6 +208,7 @@ const WORKS = [
   },
   {
     brand: "락앤락",
+    industry: "Living",
     category: "Display Ads",
     type: "집행",
     objective: "추석 시즌 프로모션·신제품 판매",
@@ -207,6 +222,7 @@ const WORKS = [
   },
   {
     brand: "제이멜라",
+    industry: "Beauty",
     category: "Landing Page",
     type: "집행",
     objective: "발렌타인 기프트 위크 판매",
@@ -217,6 +233,7 @@ const WORKS = [
   },
   {
     brand: "웅진씽크빅",
+    industry: "Education",
     category: "Display Ads",
     type: "집행",
     objective: "7일 무료체험 신청",
@@ -231,6 +248,7 @@ const WORKS = [
   },
   {
     brand: "아이키쑤욱",
+    industry: "Health Supplements",
     category: "Landing Page",
     type: "집행",
     objective: "새학기 무료체험 신청",
@@ -241,6 +259,7 @@ const WORKS = [
   },
   {
     brand: "고혼진",
+    industry: "Beauty",
     category: "Landing Page",
     type: "집행",
     objective: "중년 여성 안티에이징 크림 구매",
@@ -251,6 +270,7 @@ const WORKS = [
   },
   {
     brand: "아이클타임",
+    industry: "Health Supplements",
     category: "Landing Page",
     type: "집행",
     objective: "키성장 건강기능식품 구매",
@@ -261,6 +281,7 @@ const WORKS = [
   },
   {
     brand: "관절보궁",
+    industry: "Health Supplements",
     category: "Landing Page",
     type: "집행",
     objective: "중장년 관절 건강식품 이벤트 구매",
@@ -271,6 +292,7 @@ const WORKS = [
   },
   {
     brand: "트와터치",
+    industry: "Beauty",
     category: "Landing Page",
     type: "집행",
     objective: "자사몰 신년 단독 세트 판매",
@@ -281,6 +303,7 @@ const WORKS = [
   },
   {
     brand: "포에버의원",
+    industry: "Medical",
     category: "Landing Page",
     type: "집행",
     objective: "명동점 오픈 기념 실리프팅 상담·예약",
