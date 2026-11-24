@@ -93,6 +93,6 @@ const WORKS = [
     category: "Landing Page",
     type: "집행",
     thumbnail: "images/works/ikisuuk/thumbnail.jpg",
-    images: ["images/works/ikisuuk/landing-01.jpg"],
+    images: ["images/works/ikisuuk/landing-01.webp"],
   },
 ];
