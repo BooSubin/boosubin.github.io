@@ -63,7 +63,7 @@
   --display-weight: 400;                     /* 큰 글씨는 굵게 하지 않고 크기로 힘을 준다 */
   --display-tracking: -0.035em;
   --label-size: 13px;                        /* 이름·라벨·숫자 설명 */
-  --label-gap: 20px;                         /* 큰 문장 위아래 작은 글씨와의 간격 */
+  --label-gap: 20px;                         /* 라벨과 큰 문장 사이 간격 */
   --filter-size: clamp(28px, 3.2vw, 44px);   /* 필터 글자 */
 
   /* 필터 전환 애니메이션 시간 */
@@ -233,18 +233,6 @@ img {
 
 .archive {
   scroll-margin-top: 24px;
-}
-
-/* 대표 브랜드 (라벨 크기로 작게) */
-.hero__brands {
-  margin: var(--label-gap) 0 0;      /* 큰 문장 → 브랜드 (라벨과 같은 간격) */
-  font-size: var(--label-size);
-  font-weight: 500;
-}
-
-.hero__brands-label {
-  display: block;   /* 라벨 다음 줄에 브랜드 목록 */
-  color: var(--color-text-sub);
 }
 
 /* 숫자 줄 */
