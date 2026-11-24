@@ -11,16 +11,20 @@
 
 /* ---------- 디자인 변수 (색·폰트·간격은 여기서만 바꾼다) ---------- */
 :root {
-  --color-bg: #ffffff;
-  --color-text: #111111;
-  --color-text-sub: #6b6b6b;
-  --color-line: #e5e5e5;
-  --color-placeholder: #eeeeee;
-  --color-placeholder-text: #9a9a9a;
-  --color-badge-bg: #111111;
-  --color-badge-text: #ffffff;
-  --color-backdrop: rgb(0 0 0 / 0.6);
-  --color-scrollbar: #cccccc;
+  color-scheme: dark;
+
+  --color-bg: #141414;              /* 페이지 배경 */
+  --color-surface: #1e1e1e;         /* 작업 창 배경 (페이지보다 한 단계 밝게) */
+  --color-text: #f2f2f2;
+  --color-text-sub: #9a9a9a;
+  --color-line: #333333;
+  --color-placeholder: #262626;
+  --color-placeholder-text: #6e6e6e;
+  --color-badge-bg: #f2f2f2;
+  --color-badge-text: #141414;
+  --color-backdrop: rgb(0 0 0 / 0.75);
+  --color-scrollbar: #444444;
+  --color-image-border: rgb(255 255 255 / 0.1);  /* 흰 배경 이미지가 배경에 묻히지 않게 하는 얇은 테두리 */
 
   --font-base: "SUIT Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
 
@@ -98,6 +102,15 @@ button {
 img {
   display: block;
   max-width: 100%;
+}
+
+/* 작업 이미지 테두리 (이미지 안쪽에 1px) */
+.card__thumb img,
+.viewer__grid-button img,
+.viewer__single img,
+.viewer__landing img {
+  outline: 1px solid var(--color-image-border);
+  outline-offset: -1px;
 }
 
 /* ---------- 머리말 ---------- */
@@ -187,6 +200,7 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: top;
+  border-radius: var(--radius);
 }
 
 .card__caption {
@@ -256,7 +270,7 @@ img {
   padding: 0;
   border: 0;
   border-radius: var(--radius);
-  background: var(--color-bg);
+  background: var(--color-surface);
   color: var(--color-text);
   overflow: auto;
   overscroll-behavior: contain;
@@ -274,7 +288,7 @@ img {
   width: 48px;
   height: 48px;
   font-size: 20px;
-  background: var(--color-bg);
+  background: var(--color-surface);
   border-bottom-left-radius: var(--radius);
 }
 
