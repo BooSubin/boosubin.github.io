@@ -79,6 +79,7 @@
   --viewer-image-max: 360px;   /* 작업 창 안 이미지 한 칸의 최대 크기 */
   --viewer-blur: 24px;         /* 작업 창 뒤 페이지를 흐리는 정도 */
   --panorama-height: min(360px, 55dvh, 70vw);   /* 이어지는 캐러셀의 높이 (장당 크기 = 이 높이의 정사각형) */
+  --panorama-progress-gap: 20px;                /* 캐러셀과 진행 막대 사이 간격 */
   --landing-max: 860px;
 }
 
@@ -602,15 +603,14 @@ img {
 }
 
 /* 이어지는 캐러셀: 틈 없이 가로로 붙여 옆으로 넘겨 보기 */
-.viewer__panorama-wrap {
+.viewer__panorama-frame {
   position: relative;
 }
 
-/* 오른쪽 끝 화살표: 좌우로 살짝 흔들리며 옆으로 넘기라고 알린다 */
-.viewer__panorama-hint {
+/* 좌우 화살표: 항상 떠 있고, 그 방향 끝에서만 사라진다 */
+.viewer__panorama-arrow {
   position: absolute;
   top: 50%;
-  right: 12px;
   width: 48px;
   height: 48px;
   margin-top: -24px;
@@ -624,13 +624,23 @@ img {
   transition: opacity 300ms ease;
 }
 
-.viewer__panorama-wrap.is-scrolled .viewer__panorama-hint {
+.viewer__panorama-arrow--prev {
+  left: 12px;
+}
+
+.viewer__panorama-arrow--next {
+  right: 12px;
+}
+
+.viewer__panorama-wrap.is-start .viewer__panorama-arrow--prev,
+.viewer__panorama-wrap.is-end .viewer__panorama-arrow--next {
   opacity: 0;
   pointer-events: none;
 }
 
+/* 처음에는 오른쪽 화살표가 좌우로 살짝 흔들려 넘기라고 알린다 (한 번 넘기면 멈춤) */
 @media (prefers-reduced-motion: no-preference) {
-  .viewer__panorama-hint {
+  .viewer__panorama-wrap:not(.is-touched) .viewer__panorama-arrow--next {
     animation: hint-nudge 1.6s ease-in-out infinite;
   }
 }
@@ -644,13 +654,35 @@ img {
   }
 }
 
+/* 진행 막대 (기본 가로 스크롤바 대신) */
+.viewer__panorama-progress {
+  position: relative;
+  height: 2px;
+  margin-top: var(--panorama-progress-gap);
+  border-radius: 1px;
+  background: rgb(255 255 255 / 0.12);
+  overflow: hidden;
+}
+
+.viewer__panorama-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 1px;
+  background: rgb(255 255 255 / 0.6);
+}
+
 .viewer__panorama {
   overflow-x: auto;
   overflow-y: hidden;
   overscroll-behavior-x: contain;
   border-radius: var(--radius);
   cursor: grab;
-  scrollbar-width: thin;
+  scrollbar-width: none;       /* 기본 스크롤바는 숨기고 진행 막대로 대신한다 */
+}
+
+.viewer__panorama::-webkit-scrollbar {
+  display: none;
 }
 
 .viewer__panorama.is-dragging {

@@ -274,23 +274,47 @@
     strip.appendChild(track);
     enableSideScroll(strip);
 
-    // 오른쪽 끝 화살표: 옆으로 더 있다는 표시. 누르면 한 화면만큼 넘어간다
-    const hint = el('button', 'viewer__panorama-hint', '→');
-    hint.type = 'button';
-    hint.setAttribute('aria-label', '옆으로 넘겨 보기');
-    hint.addEventListener('click', () => {
-      strip.scrollBy({ left: strip.clientWidth * 0.8, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
-    });
+    // 좌우 화살표: 항상 떠 있고, 해당 방향 끝에 닿았을 때만 숨는다. 누르면 한 화면의 80%만큼 넘어간다
+    const arrow = (dir, label, text) => {
+      const button = el('button', `viewer__panorama-arrow viewer__panorama-arrow--${dir}`, text);
+      button.type = 'button';
+      button.setAttribute('aria-label', label);
+      button.addEventListener('click', () => {
+        stopPeek();
+        wrap.classList.add('is-touched');
+        const step = strip.clientWidth * 0.8 * (dir === 'next' ? 1 : -1);
+        strip.scrollBy({ left: step, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      });
+      return button;
+    };
+    const prev = arrow('prev', '이전으로 넘기기', '←');
+    const next = arrow('next', '다음으로 넘기기', '→');
 
+    // 얇은 진행 막대: 지금 전체 중 어디를 보고 있는지 (기본 가로 스크롤바 대신)
+    const progress = el('div', 'viewer__panorama-progress');
+    const bar = el('span', 'viewer__panorama-bar');
+    progress.appendChild(bar);
+
+    const frame = el('div', 'viewer__panorama-frame');
+    frame.append(strip, prev, next);
     const wrap = el('div', 'viewer__panorama-wrap');
-    wrap.append(strip, hint);
+    wrap.append(frame, progress);
     viewerBody.appendChild(wrap);
 
-    // 사용자가 직접 넘기기 시작하면 화살표를 숨긴다 (끝까지 가면 역시 숨김)
+    const update = () => {
+      const max = strip.scrollWidth - strip.clientWidth;
+      wrap.classList.toggle('is-start', strip.scrollLeft <= 1);
+      wrap.classList.toggle('is-end', strip.scrollLeft >= max - 1);
+      bar.style.width = `${(strip.clientWidth / strip.scrollWidth) * 100}%`;
+      bar.style.left = `${(strip.scrollLeft / strip.scrollWidth) * 100}%`;
+    };
     strip.addEventListener('scroll', () => {
-      if (peek.running) return;
-      if (strip.scrollLeft > 24) wrap.classList.add('is-scrolled');
+      update();
+      if (!peek.running && strip.scrollLeft > 24) wrap.classList.add('is-touched'); // 직접 넘기면 화살표 흔들림 멈춤
     });
+    track.querySelectorAll('img').forEach((img) => img.addEventListener('load', update));
+    new ResizeObserver(update).observe(strip); // 창 크기가 바뀌면 다시 계산
+    update();
 
     // 창이 열리고 잠시 뒤, 띠가 오른쪽으로 살짝 밀렸다 돌아온다 (옆으로 이어진다는 힌트)
     if (!reduceMotion.matches) {
