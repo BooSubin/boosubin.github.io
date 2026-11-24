@@ -277,7 +277,7 @@
     strip.appendChild(track);
     enableSideScroll(strip);
 
-    // 좌우 화살표: 진행 막대 오른쪽에 둔다(그림을 가리지 않게). 끝에 닿으면 흐려진다. 누르면 한 화면의 80%만큼 넘어간다
+    // 좌우 화살표: 그림 양옆 바깥, 세로 가운데. 끝에 닿으면 흐려진다. 누르면 한 화면의 80%만큼 넘어간다
     const arrow = (dir, label, text) => {
       const button = el('button', `viewer__panorama-arrow viewer__panorama-arrow--${dir}`, text);
       button.type = 'button';
@@ -298,10 +298,10 @@
     const bar = el('span', 'viewer__panorama-bar');
     progress.appendChild(bar);
 
-    const controls = el('div', 'viewer__panorama-controls');
-    controls.append(progress, prev, next);
+    const frame = el('div', 'viewer__panorama-frame');
+    frame.append(strip, prev, next);
     const wrap = el('div', 'viewer__panorama-wrap');
-    wrap.append(strip, controls);
+    wrap.append(frame, progress);
     viewerBody.appendChild(wrap);
 
     const update = () => {

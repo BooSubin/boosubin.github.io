@@ -79,7 +79,7 @@
   --viewer-image-max: 360px;   /* 작업 창 안 이미지 한 칸의 최대 크기 */
   --viewer-blur: 24px;         /* 작업 창 뒤 페이지를 흐리는 정도 */
   --panorama-height: min(360px, 55dvh, 70vw);   /* 이어지는 캐러셀의 높이 (장당 크기 = 이 높이의 정사각형) */
-  --panorama-progress-gap: 20px;                /* 캐러셀과 진행 막대·화살표 줄 사이 간격 */
+  --panorama-progress-gap: 20px;                /* 캐러셀과 진행 막대 사이 간격 */
   --landing-max: 860px;
 }
 
@@ -615,29 +615,56 @@ img {
 }
 
 /* 이어지는 캐러셀: 틈 없이 가로로 붙여 옆으로 넘겨 보기 */
-/* 진행 막대 + 좌우 화살표 줄 (그림 아래, 그림과 떨어뜨려 둔다) */
-.viewer__panorama-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: var(--panorama-progress-gap);
+/* 좌우 화살표: 그림 양옆 바깥, 세로 가운데 */
+.viewer__panorama-frame {
+  position: relative;
 }
 
 .viewer__panorama-arrow {
-  flex: none;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgb(255 255 255 / 0.2);
+  position: absolute;
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+  border: 1px solid rgb(255 255 255 / 0.25);
   border-radius: 50%;
   color: var(--color-text);
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 20px;
   transition: opacity 300ms ease, border-color 200ms ease;
+}
+
+.viewer__panorama-arrow--prev {
+  right: calc(100% + 16px);
+}
+
+.viewer__panorama-arrow--next {
+  left: calc(100% + 16px);
 }
 
 .viewer__panorama-arrow:hover:not(:disabled),
 .viewer__panorama-arrow:focus-visible {
-  border-color: rgb(255 255 255 / 0.6);
+  border-color: rgb(255 255 255 / 0.7);
+}
+
+/* 화면이 좁아 양옆에 자리가 없으면 그림 안쪽 가장자리에 반투명하게 띄운다 */
+@media (max-width: 1279px) {
+  .viewer__panorama-arrow {
+    border: 0;
+    background: rgb(20 20 20 / 0.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .viewer__panorama-arrow--prev {
+    right: auto;
+    left: 12px;
+  }
+
+  .viewer__panorama-arrow--next {
+    left: auto;
+    right: 12px;
+  }
 }
 
 /* 끝에 닿은 쪽 화살표는 흐리게 (자리는 그대로) */
@@ -665,9 +692,8 @@ img {
 /* 진행 막대 (기본 가로 스크롤바 대신) */
 .viewer__panorama-progress {
   position: relative;
-  flex: 1;
   height: 2px;
-  margin-right: 16px;
+  margin-top: var(--panorama-progress-gap);
   border-radius: 1px;
   background: rgb(255 255 255 / 0.12);
   overflow: hidden;
