@@ -13,6 +13,7 @@
   role       맡은 역할 (선택)
   summary    한 줄 설명 (선택)
   thumbnail  썸네일 이미지 경로 (선택) 800×800px 권장. 비워두면 images 첫 장을 정사각형으로 잘라 씁니다.
+             (원본은 크고 무거워서, 썸네일은 800×800px로 줄인 사본 thumb.webp를 따로 두는 걸 기본으로 합니다.)
   crop       썸네일을 자르는 기준 (선택) "top", "center", "bottom" 중 하나.
              비워두면 랜딩페이지는 위쪽, 나머지는 가운데를 기준으로 자릅니다. (4:5 피드 이미지는 위아래 10%씩 잘림)
   images     이미지 경로 목록 (필수) 광고·소셜 미디어는 여러 장, 랜딩은 보통 1장.
@@ -34,6 +35,7 @@ const WORKS = [
     category: "Social Media",
     type: "집행",
     layout: "panorama",
+    thumbnail: "images/works/banyan-tree/thumb.webp",
     images: [
       "images/works/banyan-tree/social-01.webp",
       "images/works/banyan-tree/social-02.webp",
@@ -50,6 +52,7 @@ const WORKS = [
     category: "Social Media",
     type: "집행",
     layout: "panorama",
+    thumbnail: "images/works/world-vision/thumb.webp",
     images: [
       "images/works/world-vision/social-01.jpg",
       "images/works/world-vision/social-02.jpg",
@@ -63,6 +66,7 @@ const WORKS = [
     brand: "우리금융그룹",
     category: "Social Media",
     type: "집행",
+    thumbnail: "images/works/woori-financial/thumb.webp",
     images: [
       "images/works/woori-financial/social-01.jpg",
       "images/works/woori-financial/social-02.webp",
@@ -73,6 +77,7 @@ const WORKS = [
     brand: "스키니랩",
     category: "Display Ads",
     type: "집행",
+    thumbnail: "images/works/skinnylab/thumb.webp",
     images: [
       "images/works/skinnylab/display-01.webp",
       "images/works/skinnylab/display-02.webp",
@@ -82,6 +87,7 @@ const WORKS = [
     brand: "락토핏",
     category: "Display Ads",
     type: "집행",
+    thumbnail: "images/works/lactofit/thumb.webp",
     images: [
       "images/works/lactofit/display-01.jpg",
       "images/works/lactofit/display-02.jpg",
@@ -92,7 +98,7 @@ const WORKS = [
     brand: "아이키쑤욱",
     category: "Landing Page",
     type: "집행",
-    thumbnail: "images/works/ikisuuk/thumbnail.webp",
+    thumbnail: "images/works/ikisuuk/thumb.webp",
     images: ["images/works/ikisuuk/landing-01.webp"],
   },
 ];
