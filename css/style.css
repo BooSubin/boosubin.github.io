@@ -301,7 +301,7 @@ img {
   color: var(--color-text-sub);
 }
 
-/* 경쟁 PT 제안 표시 */
+/* PT 시안 표시 */
 .badge {
   display: inline-block;
   padding: 3px 8px;

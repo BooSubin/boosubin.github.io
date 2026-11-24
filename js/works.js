@@ -70,7 +70,7 @@ const WORKS = [
     year: 2024,
     type: "제안",
     role: "제안 시안 디자인",
-    summary: "브랜드 캠페인 경쟁 PT 배너 시안",
+    summary: "브랜드 캠페인 PT 배너 시안",
     images: [
       "images/works/brand-d/banner-01.jpg",
       "images/works/brand-d/banner-02.jpg",
