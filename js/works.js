@@ -116,6 +116,17 @@ const WORKS = [
     ],
   },
   {
+    brand: "오레브 제주",
+    category: "Display Ads",
+    type: "집행",
+    thumbnail: "images/works/oreve-jeju/thumb.webp",
+    images: [
+      "images/works/oreve-jeju/display-01.jpg",
+      "images/works/oreve-jeju/display-02.webp",
+      "images/works/oreve-jeju/display-03.webp",
+    ],
+  },
+  {
     brand: "한화호텔앤드리조트",
     category: "Landing Page",
     type: "집행",
