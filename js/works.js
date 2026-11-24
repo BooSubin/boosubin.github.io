@@ -10,8 +10,10 @@
              ("Landing Page"는 긴 이미지를 세로로 보여주는 방식으로 열립니다.)
   year       연도 (선택) 숫자로 적습니다. 예: 2025
   type       "집행" 또는 "제안" (필수) "제안"이면 'PT 시안' 표시가 붙습니다.
-  role       맡은 역할 (선택)
-  summary    한 줄 설명 (선택)
+  objective  목표 (선택) 이 작업이 해야 했던 일. 예: "올리브영 기획세트 판매 유도"
+  hook       소구 (선택) 무엇으로 누르게 했는지. 예: "50% 할인, 1등 유산균 신뢰"
+  design     디자인 (선택) 그걸 화면에서 어떻게 풀었는지. 한두 문장.
+             (작업 창에 Objective / Hook / Design으로 나옵니다. 비워둔 항목은 나오지 않습니다.)
   thumbnail  썸네일 이미지 경로 (선택) 800×800px 권장. 비워두면 images 첫 장을 정사각형으로 잘라 씁니다.
              (원본은 크고 무거워서, 썸네일은 800×800px로 줄인 사본 thumb.webp를 따로 두는 걸 기본으로 합니다.)
   crop       썸네일을 자르는 기준 (선택) "top", "center", "bottom" 중 하나.
@@ -34,6 +36,9 @@ const WORKS = [
     brand: "반얀트리",
     category: "Social Media",
     type: "집행",
+    objective: "반얀트리 해운대 부산의 디자인 철학을 소개하는 인스타그램 캐러셀",
+    hook: "부산의 자연과 한국 전통에서 출발한 공간 이야기로 끝까지 넘겨보게 만드는 브랜드 스토리",
+    design: "8장을 한 장면처럼 이어지게 설계해 장을 넘길 때마다 사진과 선이 다음 장으로 연결되도록 구성. 회녹색 톤과 세리프 타이포로 럭셔리 톤 유지",
     layout: "panorama",
     thumbnail: "images/works/banyan-tree/thumb.webp",
     images: [
@@ -51,6 +56,9 @@ const WORKS = [
     brand: "스키니랩",
     category: "Display Ads",
     type: "집행",
+    objective: "모로실 다이어트 올리브영 할인 행사 판매 유도",
+    hook: "78%, 최대 30% 할인율과 '단 오늘 하루만' 기간 한정",
+    design: "할인 숫자를 입체 젤리 질감으로 크게 세워 제품보다 먼저 읽히게 구성. 블러드오렌지 원료 이미지로 제품 특징 연결",
     thumbnail: "images/works/skinnylab/thumb.webp",
     images: [
       "images/works/skinnylab/display-01.webp",
@@ -61,6 +69,9 @@ const WORKS = [
     brand: "월드비전",
     category: "Social Media",
     type: "집행",
+    objective: "글로벌 6K 캠페인 참가 신청 유도",
+    hook: "'나 혼자만 레벨업' 협업. 캠페인을 작품 속 '퀘스트'로 제시해 참여를 게임처럼 느끼게 함",
+    design: "작품 속 시스템 창 UI를 차용해 6장을 하나의 게이트 공간으로 연결. 마지막 장의 참여 버튼까지 이야기가 이어지도록 구성",
     layout: "panorama",
     thumbnail: "images/works/world-vision/thumb.webp",
     images: [
@@ -76,6 +87,9 @@ const WORKS = [
     brand: "락앤락",
     category: "Display Ads",
     type: "집행",
+    objective: "추석 시즌 프로모션과 신제품 판매 유도",
+    hook: "35% 할인, 15만원 초특가 가격 혜택",
+    design: "한가위는 전통 문양과 꽃 오브젝트로 시즌감을, 스팀프라이어는 실사 주방 연출로 라이프스타일 감성을 강조해 제품별로 톤을 다르게 설계",
     thumbnail: "images/works/locknlock/thumb.webp",
     images: [
       "images/works/locknlock/display-01.webp",
@@ -86,6 +100,9 @@ const WORKS = [
     brand: "락토핏",
     category: "Display Ads",
     type: "집행",
+    objective: "올리브영 락토핏 골드 더블기획 세트 판매 유도",
+    hook: "50% 할인, '대한민국 1등 유산균' 신뢰, 올영 PICK",
+    design: "50을 거대한 입체 숫자로 세워 할인율이 먼저 읽히게 구성. 세 장을 할인율·올리브영 입점·선물 구성으로 나눠 각기 다른 소구로 제작",
     thumbnail: "images/works/lactofit/thumb.webp",
     images: [
       "images/works/lactofit/display-01.jpg",
@@ -97,6 +114,9 @@ const WORKS = [
     brand: "한화호텔앤드리조트",
     category: "Landing Page",
     type: "집행",
+    objective: "하이엔드 프라이빗 리조트 ANTO 멤버십 소개와 가입 유도",
+    hook: "서울에서 40분, 북한산 자연 속 프라이빗 공간과 멤버십 혜택",
+    design: "수묵화 같은 안개·산 이미지와 아치형 프레임으로 고요한 톤 연출. 멤버십 혜택은 아이콘 그리드로 정리",
     thumbnail: "images/works/hanwha-resort/thumb.jpg",
     images: ["images/works/hanwha-resort/landing-01.jpg"],
   },
@@ -104,6 +124,9 @@ const WORKS = [
     brand: "우리금융그룹",
     category: "Social Media",
     type: "집행",
+    objective: "그룹 공식 SNS 캐릭터 '위비프렌즈' 채널 콘텐츠",
+    hook: "댄스 챌린지, 모델 생일 축하, 뉴스 형식 등 캐릭터를 앞세운 친근한 소재로 관심과 참여 유도",
+    design: "콘텐츠마다 포맷(챌린지, 픽셀 아트, 뉴스 화면)을 달리해 금융 브랜드의 딱딱함을 덜고 캐릭터 세계관 유지",
     thumbnail: "images/works/woori-financial/thumb.webp",
     images: [
       "images/works/woori-financial/social-01.jpg",
@@ -115,6 +138,9 @@ const WORKS = [
     brand: "웅진씽크빅",
     category: "Display Ads",
     type: "집행",
+    objective: "스마트올 올백 7일 무료체험 신청 유도",
+    hook: "'0원' 체험, 초등 입학 준비 고민, 방문선생님 밀착관리",
+    design: "학부모의 고민을 헤드라인으로 세우고, 0·돋보기·캡슐 같은 오브젝트 하나에 메시지를 압축",
     thumbnail: "images/works/woongjin-thinkbig/thumb.webp",
     images: [
       "images/works/woongjin-thinkbig/display-01.jpg",
@@ -126,6 +152,9 @@ const WORKS = [
     brand: "아이키쑤욱",
     category: "Landing Page",
     type: "집행",
+    objective: "새학기 키성장 건강기능식품 무료체험 신청 유도",
+    hook: "새학기 키성장 고민, 기능성 원료와 6년근 홍삼, 학부모 후기",
+    design: "3D 캐릭터와 제품 연출로 친근함을 주고, 학부모의 고민에서 해결까지 체크포인트 흐름으로 구성",
     thumbnail: "images/works/ikisuuk/thumb.webp",
     images: ["images/works/ikisuuk/landing-01.webp"],
   },
@@ -133,6 +162,9 @@ const WORKS = [
     brand: "오레브 제주",
     category: "Display Ads",
     type: "집행",
+    objective: "JW 메리어트 제주 프라이빗 회원권 안내자료 신청 유도",
+    hook: "연간 10박, 골프 50%, 선착순 한정 혜택과 최상위 휴양 이미지",
+    design: "현무암·바다·노을 등 제주 실사를 크게 쓰고 세리프 로고타입으로 하이엔드 톤 유지. 혜택은 작은 태그로 절제해 배치",
     thumbnail: "images/works/oreve-jeju/thumb.webp",
     images: [
       "images/works/oreve-jeju/display-01.jpg",
@@ -144,6 +176,9 @@ const WORKS = [
     brand: "락토핏",
     category: "Landing Page",
     type: "집행",
+    objective: "가정의 달 선물세트 판매 유도",
+    hook: "기간 특가 할인, 선물세트 구매 시 용돈봉투 증정, 호텔 숙박권 추첨",
+    design: "카네이션과 선물상자로 시즌감을 만들고, 혜택 3가지를 편지봉투 아이콘으로 한눈에 정리",
     thumbnail: "images/works/lactofit/landing-thumb.jpg",
     images: ["images/works/lactofit/landing-01.jpg"],
   },
@@ -151,6 +186,9 @@ const WORKS = [
     brand: "트와터치",
     category: "Landing Page",
     type: "집행",
+    objective: "자사몰 신년 단독 HAPPY SET 판매 유도",
+    hook: "최대 30% 할인, 사은품 0원, 자사몰 한정 무료배송",
+    design: "스노우볼과 하트 오브젝트, 그리드 배경으로 Y2K 무드 연출. 세트별 가격 카드로 비교가 쉽게 구성",
     thumbnail: "images/works/twatouch/thumb.jpg",
     images: ["images/works/twatouch/landing-01.jpg"],
   },
@@ -158,6 +196,9 @@ const WORKS = [
     brand: "제이멜라",
     category: "Landing Page",
     type: "집행",
+    objective: "발렌타인 기프트 위크 기간 판매 유도",
+    hook: "20% 추가 쿠폰, 로맨틱 세트 사은품, 구매 금액별 누적 사은품",
+    design: "핑크 하트와 선물상자 3D 연출로 시즌 무드를 만들고, 이벤트 4개를 번호 섹션으로 나눠 혜택이 순서대로 읽히게 구성",
     thumbnail: "images/works/jmella/thumb.jpg",
     images: ["images/works/jmella/landing-01.jpg"],
   },
@@ -165,6 +206,9 @@ const WORKS = [
     brand: "아이클타임",
     category: "Landing Page",
     type: "집행",
+    objective: "키성장 건강기능식품 구매 유도",
+    hook: "'2개월 공짜' 혜택, 키성장 1등·누적 고객 79만명·재구매율 95% 신뢰 지표, 학부모 후기",
+    design: "보라·노랑 대비와 시계 오브젝트로 '지금이 타이밍'이라는 긴급성을 만들고, 모델과 수치로 신뢰 구간 구성",
     thumbnail: "images/works/iclltime/thumb.jpg",
     images: ["images/works/iclltime/landing-01.jpg"],
   },
@@ -172,6 +216,9 @@ const WORKS = [
     brand: "멀티캠퍼스",
     category: "Display Ads",
     type: "집행",
+    objective: "멀티잇 부트캠프(프론트엔드·데이터) 수강 신청 유도",
+    hook: "웹소설·밈 패러디('초특급 개발 능력자', '이.왜.진?', '취업이되')로 비전공자의 공감과 호기심 자극",
+    design: "웹소설 표지풍 타이포와 3D 캐릭터를 결합해 교육 광고의 딱딱함을 덜고, 하단 CTA 바는 세 장 모두 통일",
     thumbnail: "images/works/multicampus/thumb.webp",
     images: [
       "images/works/multicampus/display-01.jpg",

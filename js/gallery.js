@@ -234,8 +234,10 @@
     if (work.type === '제안') viewerTags.appendChild(proposalBadge());
 
     viewerMeta.replaceChildren();
-    if (work.role) addMeta('역할', work.role);
-    if (work.summary) addMeta('설명', work.summary);
+    // 작업 설명 (비워둔 항목은 나오지 않는다)
+    if (work.objective) addMeta('Objective', work.objective);
+    if (work.hook) addMeta('Hook', work.hook);
+    if (work.design) addMeta('Design', work.design);
     viewerMeta.hidden = !viewerMeta.children.length;
 
     renderViewerBody();

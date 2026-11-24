@@ -603,28 +603,43 @@ img {
 }
 
 .viewer__meta {
-  margin: 16px 0 0;
+  max-width: 640px;
+  margin: 20px auto 0;
+  display: grid;
+  gap: 8px;
 }
 
 .viewer__meta[hidden] {
   display: none;
 }
 
+/* 작업 설명 한 줄: 왼쪽 영문 라벨, 오른쪽 내용 (묶음 전체는 가운데, 글자는 왼쪽 정렬) */
 .viewer__meta-row {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 88px 1fr;
   gap: 12px;
   font-size: 14px;
+  line-height: 1.6;
+  text-align: left;
 }
 
 .viewer__meta-row dt {
-  flex: none;
-  width: 40px;
+  font-family: var(--font-display);
+  font-size: var(--label-size);
   color: var(--color-text-sub);
+  padding-top: 1px;
 }
 
 .viewer__meta-row dd {
   margin: 0;
+  color: var(--color-text);
+}
+
+@media (max-width: 480px) {
+  .viewer__meta-row {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
 }
 
 .viewer__body {
