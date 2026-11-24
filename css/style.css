@@ -41,6 +41,8 @@
   --color-text-hover: #cfcfcf;      /* 회색 글자에 마우스를 올렸을 때 */
   --color-filter-idle: #666666;     /* 고르지 않은 필터 (배경 대비 3.2:1, 큰 글씨 기준 3:1 이상) */
   --color-filter-hover: #9a9a9a;    /* 고르지 않은 필터에 마우스를 올렸을 때 */
+  --color-selection-bg: #f2f2f2;    /* 글자 블록 지정 배경 */
+  --color-selection-text: #141414;  /* 글자 블록 지정 글자 */
   --color-line: #333333;
   --color-placeholder: #262626;
   --color-placeholder-text: #6e6e6e;
@@ -148,6 +150,24 @@ body {
 :focus-visible {
   outline: 1px solid rgb(255 255 255 / 0.6);
   outline-offset: 3px;
+}
+
+/* 글자 블록 지정: 메인 페이지는 막고, 작업 창의 제목·소개 글만 허용한다 */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.viewer__head,
+.viewer__meta {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* 블록 지정 색 (브라우저 기본 파랑 대신) */
+::selection {
+  background: var(--color-selection-bg);
+  color: var(--color-selection-text);
 }
 
 html.is-locked {
