@@ -193,6 +193,20 @@ const WORKS = [
     images: ["images/works/twatouch/landing-01.jpg"],
   },
   {
+    brand: "쿠디",
+    category: "Display Ads",
+    type: "집행",
+    objective: "캠핑용 캔들라이트·스피커 제품 판매 유도",
+    hook: "감성 캠핑 무드와 핵심 스펙(360° 서라운드, IP67 방수, 31시간 재생, 8단 밝기), 기간한정 34% 할인",
+    design: "어두운 배경에 조명 불빛을 주인공으로 두고 세리프 영문 타이포로 프리미엄 캠핑 무드 연출. 스펙은 얇은 선과 원형 라벨로 절제해 배치",
+    thumbnail: "images/works/coody/thumb.webp",
+    images: [
+      "images/works/coody/display-01.jpg",
+      "images/works/coody/display-02.jpg",
+      "images/works/coody/display-03.jpg",
+    ],
+  },
+  {
     brand: "제이멜라",
     category: "Landing Page",
     type: "집행",
