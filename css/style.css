@@ -1,3 +1,14 @@
+/* ---------- 서체 ---------- */
+/* SUIT (SIL Open Font License, fonts/SUIT-LICENSE.txt) */
+@font-face {
+  font-family: "SUIT Variable";
+  src: url("../fonts/SUIT-Variable.woff2") format("woff2-variations"),
+       url("../fonts/SUIT-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ---------- 디자인 변수 (색·폰트·간격은 여기서만 바꾼다) ---------- */
 :root {
   --color-bg: #ffffff;
@@ -11,7 +22,7 @@
   --color-backdrop: rgb(0 0 0 / 0.6);
   --color-scrollbar: #cccccc;
 
-  --font-base: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  --font-base: "SUIT Variable", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
 
   --page-max: 1440px;
   --page-gutter: 16px;
