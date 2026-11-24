@@ -47,7 +47,8 @@
   <!-- 작업 크게 보기 창 -->
   <dialog class="viewer" data-viewer aria-labelledby="viewer-title">
     <button class="viewer__close" type="button" data-viewer-close aria-label="닫기">✕</button>
-    <div class="viewer__inner">
+    <!-- 창이 열릴 때 닫기 버튼 대신 이 묶음에 포커스가 가도록 (닫기 버튼에 파란 테두리가 생기지 않게) -->
+    <div class="viewer__inner" tabindex="-1" autofocus>
       <header class="viewer__head">
         <h2 class="viewer__title" id="viewer-title" data-viewer-title></h2>
         <p class="viewer__tags" data-viewer-tags></p>

@@ -480,6 +480,10 @@ img {
 }
 
 /* 내용 묶음: 짧으면 화면 가운데, 길면 스크롤 */
+.viewer__inner:focus {
+  outline: none;   /* 창이 열릴 때 받는 포커스라 테두리를 그리지 않는다 */
+}
+
 .viewer__inner {
   width: 100%;
   max-width: var(--viewer-max);
