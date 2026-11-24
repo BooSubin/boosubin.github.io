@@ -51,15 +51,19 @@
     return box;
   }
 
+  // 작업 이미지: 불러오는 동안은 B 마크가 은은하게 깜빡이고, 다 불러오면 이미지가 부드럽게 나타난다
   function image(src, alt, label, shape) {
     if (!src) return placeholder(label, shape);
+    const frame = el('span', `media media--${shape} is-loading`);
     const img = document.createElement('img');
     img.alt = alt;
     img.loading = 'lazy';
     img.decoding = 'async';
-    img.addEventListener('error', () => img.replaceWith(placeholder(label, shape)), { once: true });
+    img.addEventListener('load', () => frame.classList.remove('is-loading'), { once: true });
+    img.addEventListener('error', () => frame.replaceWith(placeholder(label, shape)), { once: true });
     img.src = src;
-    return img;
+    frame.appendChild(img);
+    return frame;
   }
 
   function proposalBadge() {
