@@ -169,7 +169,7 @@ const WORKS = [
     brand: "우리금융그룹",
     category: "Social Media",
     type: "집행",
-    objective: "그룹 공식 인스타그램 채널 콘텐츠",
+    objective: "공식 인스타그램으로 그룹 브랜드 친밀도 제고",
     hook: "캐릭터 '위비프렌즈'를 앞세운 친근한 소재",
     design: "챌린지·픽셀 아트·뉴스 화면으로 포맷을 매번 바꿔 금융 브랜드의 딱딱함을 덜어냄",
     thumbnail: "images/works/woori-financial/thumb.webp",
