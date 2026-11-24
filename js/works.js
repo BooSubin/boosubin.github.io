@@ -254,4 +254,14 @@ const WORKS = [
       "images/works/chicor/display-03.webp",
     ],
   },
+  {
+    brand: "고혼진",
+    category: "Landing Page",
+    type: "집행",
+    objective: "중년 여성 대상 안티에이징 크림 구매 유도",
+    hook: "'중년 여성 1등 화장품', 주름·기미 개선 효과, 특허 성분의 타사 대비 3배 흡수, 61세 고객 후기",
+    design: "붉은 꽃과 크림 용기를 합성한 키 비주얼로 고급감을 주고, 고민 → 성분 → 후기 순으로 신뢰를 쌓는 구조로 구성. 수치와 핵심 문구는 빨간 강조로 빠르게 읽히게",
+    thumbnail: "images/works/kohonjin/thumb.jpg",
+    images: ["images/works/kohonjin/landing-01.jpg"],
+  },
 ];
