@@ -14,6 +14,8 @@
   summary    한 줄 설명 (선택)
   thumbnail  썸네일 이미지 경로 (선택) 800×800px 권장. 비워두면 images 첫 장의 윗부분을 씁니다.
   images     이미지 경로 목록 (필수) 광고·소셜 미디어는 여러 장, 랜딩은 보통 1장.
+  layout     보여주는 방식 (선택) "panorama"로 적으면 이미지를 틈 없이 가로로 이어 붙여 옆으로 넘겨 봅니다.
+             슬라이드끼리 그림이 이어지는 캐러셀 콘텐츠에 씁니다.
 
   이미지 파일이 없거나 경로가 틀리면 그 자리는 회색 상자로 보입니다.
 */
@@ -25,6 +27,23 @@ const CAREER_START = "2020-01";
 const CATEGORY_ORDER = ["Display Ads", "Social Media", "Landing Page"];
 
 const WORKS = [
+  {
+    brand: "반얀트리",
+    category: "Social Media",
+    year: 2024,
+    type: "집행",
+    layout: "panorama",
+    images: [
+      "images/works/banyan-tree/social-01.jpg",
+      "images/works/banyan-tree/social-02.jpg",
+      "images/works/banyan-tree/social-03.jpg",
+      "images/works/banyan-tree/social-04.jpg",
+      "images/works/banyan-tree/social-05.jpg",
+      "images/works/banyan-tree/social-06.jpg",
+      "images/works/banyan-tree/social-07.jpg",
+      "images/works/banyan-tree/social-08.jpg",
+    ],
+  },
   {
     brand: "우리금융그룹",
     category: "Social Media",

@@ -251,6 +251,7 @@
     const { work } = state;
     viewerBody.replaceChildren();
     if (isLanding(work)) renderLanding(work);
+    else if (work.layout === 'panorama') renderPanorama(work);
     else renderImageGrid(work);
   }
 
@@ -261,6 +262,49 @@
       wrap.appendChild(image(src, `${workName(work)} ${i + 1}`, `${work.brand} 랜딩페이지`, 'tall'));
     });
     viewerBody.appendChild(wrap);
+  }
+
+  // 이어지는 캐러셀: 이미지를 틈 없이 가로로 붙여 옆으로 넘겨 본다
+  function renderPanorama(work) {
+    const strip = el('div', 'viewer__panorama');
+    const track = el('div', 'viewer__panorama-track');
+    work.images.forEach((src, i) => {
+      track.appendChild(image(src, `${workName(work)} ${i + 1}`, `${work.brand}\n${i + 1}`, 'panel'));
+    });
+    strip.appendChild(track);
+    enableSideScroll(strip);
+    viewerBody.appendChild(strip);
+  }
+
+  // 마우스 휠(위아래)로도 옆으로 넘어가게, 마우스로 끌어서도 넘길 수 있게
+  function enableSideScroll(strip) {
+    strip.addEventListener('wheel', (event) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return; // 트랙패드 가로 스크롤은 그대로
+      const max = strip.scrollWidth - strip.clientWidth;
+      const atStart = strip.scrollLeft <= 0 && event.deltaY < 0;
+      const atEnd = strip.scrollLeft >= max - 1 && event.deltaY > 0;
+      if (atStart || atEnd) return; // 양 끝에서는 창 스크롤로 넘긴다
+      event.preventDefault();
+      strip.scrollLeft += event.deltaY;
+    }, { passive: false });
+
+    let dragX = null;
+    strip.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      dragX = { x: event.clientX, left: strip.scrollLeft };
+      strip.classList.add('is-dragging');
+      strip.setPointerCapture(event.pointerId);
+    });
+    strip.addEventListener('pointermove', (event) => {
+      if (!dragX) return;
+      strip.scrollLeft = dragX.left - (event.clientX - dragX.x);
+    });
+    const endDrag = () => {
+      dragX = null;
+      strip.classList.remove('is-dragging');
+    };
+    strip.addEventListener('pointerup', endDrag);
+    strip.addEventListener('pointercancel', endDrag);
   }
 
   // 배너·소셜 미디어 등: 여러 장을 격자로 보여준다 (한 장씩 크게 보는 화면은 없음)
@@ -278,7 +322,7 @@
 
   // 작업 이미지·글자가 아닌 빈 곳을 누르면 닫기
   viewer.addEventListener('click', (event) => {
-    if (event.target.closest('.viewer__grid-item, .viewer__landing, .viewer__head, .viewer__meta')) return;
+    if (event.target.closest('.viewer__grid-item, .viewer__landing, .viewer__panorama, .viewer__head, .viewer__meta')) return;
     viewer.close();
   });
 
