@@ -69,4 +69,14 @@ const WORKS = [
       "images/works/woori-financial/social-03.jpg",
     ],
   },
+  {
+    brand: "락토핏",
+    category: "Display Ads",
+    type: "집행",
+    images: [
+      "images/works/lactofit/display-01.jpg",
+      "images/works/lactofit/display-02.jpg",
+      "images/works/lactofit/display-03.jpg",
+    ],
+  },
 ];
