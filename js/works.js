@@ -108,4 +108,11 @@ const WORKS = [
     thumbnail: "images/works/iclltime/thumb.jpg",
     images: ["images/works/iclltime/landing-01.jpg"],
   },
+  {
+    brand: "제이멜라",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/jmella/thumb.jpg",
+    images: ["images/works/jmella/landing-01.jpg"],
+  },
 ];
