@@ -134,6 +134,13 @@ const WORKS = [
     images: ["images/works/hanwha-resort/landing-01.jpg"],
   },
   {
+    brand: "락토핏",
+    category: "Landing Page",
+    type: "집행",
+    thumbnail: "images/works/lactofit/landing-thumb.jpg",
+    images: ["images/works/lactofit/landing-01.jpg"],
+  },
+  {
     brand: "트와터치",
     category: "Landing Page",
     type: "집행",
@@ -160,13 +167,5 @@ const WORKS = [
     type: "집행",
     thumbnail: "images/works/jmella/thumb.jpg",
     images: ["images/works/jmella/landing-01.jpg"],
-  },
-  {
-    brand: "락토핏",
-    title: "가정의 달",
-    category: "Landing Page",
-    type: "집행",
-    thumbnail: "images/works/lactofit/landing-thumb.jpg",
-    images: ["images/works/lactofit/landing-01.jpg"],
   },
 ];
