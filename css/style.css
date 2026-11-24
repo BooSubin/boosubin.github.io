@@ -582,12 +582,17 @@ img {
   padding-top: 24px;
 }
 
-/* 배너·소셜 미디어 여러 장 격자 (한 칸은 --viewer-image-max보다 커지지 않는다) */
+/* 배너·소셜 미디어 여러 장 격자
+   - 한 칸은 --viewer-image-max보다 커지지 않는다
+   - 장수가 칸 수보다 적거나 마지막 줄이 덜 차면 가운데로 모은다 */
 .viewer__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, var(--viewer-image-max)));
-  gap: 12px;
-  align-items: start;
+  --cols: 2;
+  --gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--gap);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -595,8 +600,12 @@ img {
 
 @media (min-width: 768px) {
   .viewer__grid {
-    grid-template-columns: repeat(3, minmax(0, var(--viewer-image-max)));
+    --cols: 3;
   }
+}
+
+.viewer__grid > .viewer__grid-item {
+  width: min(var(--viewer-image-max), (100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
 }
 
 /* 작업 창에서는 자르지 않고 원래 비율 그대로 (정사각형은 정사각형, 4:5는 4:5) */
