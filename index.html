@@ -5,26 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>부수빈 포트폴리오</title>
-  <style>
-    :root {
-      --color-bg: #ffffff;
-      --color-text: #111111;
-      --font-base: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--color-bg);
-      color: var(--color-text);
-      font-family: var(--font-base);
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/works.js" defer></script>
+  <script src="js/gallery.js" defer></script>
 </head>
 <body>
-  <h1>부수빈 포트폴리오</h1>
+  <header class="site-header">
+    <h1 class="site-title">부수빈 포트폴리오</h1>
+  </header>
+
+  <main class="archive">
+    <nav class="filter" aria-label="카테고리" data-filter-list></nav>
+    <ul class="grid" data-grid></ul>
+  </main>
+
+  <!-- 작업 크게 보기 창 -->
+  <dialog class="viewer" data-viewer aria-labelledby="viewer-title">
+    <button class="viewer__close" type="button" data-viewer-close aria-label="닫기">✕</button>
+    <header class="viewer__head">
+      <h2 class="viewer__title" id="viewer-title" data-viewer-title></h2>
+      <p class="viewer__tags" data-viewer-tags></p>
+    </header>
+    <dl class="viewer__meta" data-viewer-meta></dl>
+    <div class="viewer__body" data-viewer-body></div>
+  </dialog>
 </body>
 </html>
